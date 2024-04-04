@@ -1,0 +1,27 @@
+     1                                  ;simple exercises: 9 and 24
+     2                                  ;9 on eax and 24 on ebx
+     3                                  ; 3*4=C(12)
+     4                                  bits 64
+     5                                  global  start 
+     6                                  
+     7                                  extern  exit
+     8                                  import  exit msvcrt.dll
+     9                                          
+    10                                  segment  data use64 class=data 
+    11 00000000 03                          a db 3
+    12 00000001 04                          b db 4
+    13 00000002 01                          c db 1
+    14                                      d dd 
+    14          ******************       warning: no operand for data declaration
+    15                                  segment  code use64 class=code 
+    16                                  start: 
+    17 00000000 8A0425[00000000]        	mov al,[a]
+    18 00000007 8A2425[01000000]            mov ah,[b]
+    19 0000000E F6E7                        mul bh
+    20 00000010 B856020000                  mov eax,256h
+    21 00000015 66BB0100                    mov bx,1
+    22 00000019 F7F3                        div ebx
+    23                                  
+    24                                  	
+    25 0000001B 6A00                    	push   dword 0 
+    26 0000001D FF1425[00000000]        	call   [exit] 

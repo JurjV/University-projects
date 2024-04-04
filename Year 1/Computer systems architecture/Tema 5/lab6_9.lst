@@ -1,0 +1,61 @@
+     1                                  ;   A list of doublewords is given. Starting from the low part of the doubleword, obtain the doubleword made of the high even bytes of the low words of ;      each doubleword from the given list. If there are not en
+     2                                  
+     3                                  bits 32 
+     4                                  
+     5                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     6                                  global start        
+     7                                  
+     8                                  ; declare external functions needed by our program
+     9                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+    10                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    11                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    12                                  
+    13                                  ; our data is declared here (the variables needed by our program)
+    14                                  segment data use32 class=data
+    15                                  
+    16 00000000 785634124D3C2C1A76-          s DD 12345678h, 1A2C3C4Dh, 98FCDD76h, 12783A2Bh
+    16 00000009 DDFC982B3A7812     
+    17                                       len equ ($-s)/4 ; the length of the string,in doublewords
+    18 00000010 02                           two db 2 ; variable for testing if the number is even
+    19                                  
+    20                                  ; our code starts here
+    21                                  segment code use32 class=code
+    22                                      start:
+    23 00000000 BB00000000                      mov ebx,0
+    24 00000005 83EB01                          sub ebx,1 ; initializing ebx with FFFF...
+    25                                          
+    26 00000008 BA00000000                      mov edx,0 ;counts how many even numbers we have
+    27                                          
+    28 0000000D B904000000                      mov ecx,len
+    29 00000012 BE[00000000]                    mov esi,s ; in eds:esi we will store the FAR address of the string "s"
+    30 00000017 FC                              cld ; parse from left to right
+    31                                          repeat1:
+    32 00000018 AD                                  lodsd ; get every double word
+    33                                              
+    34 00000019 6650                                push ax
+    35 0000001B B800000000                          mov eax,0
+    36 00000020 6658                                pop ax
+    37 00000022 C1E808                              shr eax,8 ; isolate the high byte of the low word of each doubleword
+    38                                              
+    39 00000025 F635[10000000]                      div byte[two]
+    40 0000002B 80FC00                              cmp ah,0 
+    41 0000002E 7509                                jne sari
+    42 00000030 F625[10000000]                          mul byte[two]
+    43 00000036 6650                                    push ax ; push the word on the stack if the low byte is even
+    44 00000038 42                                      inc edx ; increment if even byte found
+    45                                              sari:
+    46 00000039 E2DD                            loop repeat1
+    47                                          
+    48 0000003B 89D1                            mov ecx,edx ; we give ecx the number of even bytes found
+    49 0000003D 83F900                          cmp ecx,0
+    50 00000040 7409                            je Final ; if there are no even number we end the program
+    51                                          repeat2:
+    52 00000042 6658                                pop ax 
+    53 00000044 C1E308                              shl ebx,8 
+    54 00000047 88C3                                mov bl,al   ; we put the even bytes found in ebx
+    55 00000049 E2F7                            loop repeat2
+    56                                          Final:
+    57                                      
+    58                                          ; exit(0)
+    59 0000004B 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    60 0000004D FF15[00000000]                  call    [exit]       ; call exit to terminate the program

@@ -1,0 +1,37 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      
+    14                                      ; A byte string S of length l is given. Obtain the string D of length l-1 so that the elements of ; D represent the difference between every two consecutive elements of S.
+    15                                      
+    16 00000000 01020406080809              s db 1,2,4,6,8,8,9
+    17                                      l equ $-s
+    18 00000007 00<rept>                    d times l-1 db 0 ; rezerve l-1 bytes for the difference of the numbers and initialize them with 0
+    19                                  
+    20                                  ; our code starts here
+    21                                  segment code use32 class=code
+    22                                      start:
+    23                                          
+    24 00000000 B906000000                      mov ecx,l-1 ; initialise ecx with l-1
+    25 00000005 BE00000000                      mov esi,0
+    26 0000000A E317                            jecxz Final
+    27                                          Difference:
+    28 0000000C 8A86[00000000]                      mov al,[s+esi]
+    29 00000012 8A9E[01000000]                      mov bl,[s+esi+1]
+    30 00000018 28C3                                sub bl,al ; compute the difference between the two consecutive numbers
+    31 0000001A 889E[07000000]                      mov [d+esi],bl ; mov it in the result
+    32 00000020 46                                  inc esi ; increment the position
+    33 00000021 E2E9                            loop Difference
+    34                                          Final:
+    35                                          ; exit(0)
+    36 00000023 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    37 00000025 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

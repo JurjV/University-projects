@@ -1,0 +1,7 @@
+list_to_set([],Set,Set).
+list_to_set([H|T],Set,R):-
+    \+member(H,Set),
+    list_to_set(T,[H|Set],R).
+list_to_set([H|T],Set,R):-
+    member(H,Set),
+    list_to_set(T,Set,R).

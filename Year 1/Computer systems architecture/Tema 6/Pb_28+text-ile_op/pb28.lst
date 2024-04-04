@@ -1,0 +1,83 @@
+     1                                  ;A file name (defined in data segment) is given. Create a file with the given name, then read words from the keyboard until character '$' is read. Write only the words that contain at least one lowercase letter to f
+     2                                  bits 32 ; assembling for the 32 bits architecture
+     3                                  
+     4                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     5                                  global start        
+     6                                  
+     7                                  ; declare external functions needed by our program
+     8                                  extern exit,fopen,scanf,fclose,fprintf               ; tell nasm that exit exists even if we won't be defining it
+     9                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    10                                  import fopen msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    11                                  import fclose msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    12                                  import scanf msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    13                                  import fprintf msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    14                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    15                                  
+    16                                  ; our data is declared here (the variables needed by our program)
+    17                                  segment data use32 class=data
+    18 00000000 66696C652E74787400          file_name db "file.txt",0
+    19 00000009 7700                        write_mode db "w",0
+    20 0000000B FFFFFFFF                    file_descriptor dd -1
+    21 0000000F 00<rept>                    cuvant times 100 db 0
+    22 00000073 257300                      cuvant_format db "%s",0
+    23 00000076 00<rept>                    cuv_de_scris times 100 db 0 
+    24 000000DA 25730A00                    cuv_de_scris_format db "%s",0ah,0
+    25                                  
+    26                                  ; our code starts here
+    27                                  segment code use32 class=code
+    28                                      start:
+    29 00000000 68[09000000]                    push write_mode
+    30 00000005 68[00000000]                    push file_name
+    31 0000000A FF15[00000000]                  call [fopen]  ; deschidem fisierul
+    32 00000010 83C408                          add esp,4*2
+    33                                          
+    34 00000013 A3[0B000000]                    mov [file_descriptor],eax
+    35 00000018 83F800                          cmp eax,0
+    36 0000001B 7464                            je Final  ; daca avem eroare la crearea si deschiderea fisierului
+    37                                          
+    38                                          Reading_loop:
+    39 0000001D 68[0F000000]                    push cuvant
+    40 00000022 68[73000000]                    push cuvant_format
+    41 00000027 FF15[00000000]                  call [scanf]  ;citim un cuvant de la tastatura
+    42 0000002D 83C408                          add esp,4*2
+    43                                          
+    44 00000030 BE[0F000000]                    mov esi,cuvant
+    45 00000035 BF[76000000]                    mov edi,cuv_de_scris
+    46 0000003A B200                            mov dl,0
+    47                                          Prelucrare_cuvant:
+    48 0000003C AC                                  lodsb 
+    49 0000003D 3C24                                cmp al,"$"  ; conditia de a termina de citit
+    50 0000003F 7431                                je Gata
+    51                                              
+    52 00000041 3C00                                cmp al,0
+    53 00000043 740D                                je Urmatorul_cuvant
+    54 00000045 3C30                                cmp al,"0"
+    55 00000047 7206                                jb Not_valid
+    56 00000049 3C39                                cmp al,"9"
+    57 0000004B 7702                                ja Not_valid
+    58 0000004D FEC2                                inc dl   ; creste daca gasim litera mica in cuvant
+    59                                              Not_valid:
+    60 0000004F AA                                  stosb
+    61 00000050 EBEA                                jmp Prelucrare_cuvant
+    62                                              
+    63                                              Urmatorul_cuvant: ;adaugam cuvantul in text file si trecem la urmatorul
+    64 00000052 80FA00                                  cmp dl,0
+    65 00000055 7419                                    je Nu_adaug
+    66 00000057 68[76000000]                            push dword cuv_de_scris
+    67 0000005C 68[DA000000]                            push dword cuv_de_scris_format
+    68 00000061 FF35[0B000000]                          push dword [file_descriptor]
+    69 00000067 FF15[00000000]                          call [fprintf]
+    70 0000006D 83C40C                                  add esp,4*3
+    71                                                  Nu_adaug:
+    72 00000070 EBAB                                    jmp Reading_loop
+    73                                              Gata:
+    74                                              
+    75 00000072 FF35[0B000000]                  push dword [file_descriptor]
+    76 00000078 FF15[00000000]                  call [fclose]
+    77 0000007E 83C404                          add esp,4
+    78                                          
+    79                                          Final:
+    80                                      
+    81                                          ; exit(0)
+    82 00000081 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    83 00000083 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

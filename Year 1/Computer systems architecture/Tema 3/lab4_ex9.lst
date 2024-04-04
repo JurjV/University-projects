@@ -1,0 +1,61 @@
+     1                                  bits 32 
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ;Given the word A and the byte B, compute the doubleword C as follows:
+    14                                      ;the bits 0-3 of C are the same as the bits 6-9 of A
+    15                                      ;the bits 4-5 of C have the value 1
+    16                                      ;the bits 6-7 of C are the same as the bits 1-2 of B
+    17                                      ;the bits 8-23 of C are the same as the bits of A
+    18                                      ;the bits 24-31 of C are the same as the bits of B
+    19                                      
+    20                                      
+    21 00000000 3593                        a dw 1001001100110101b
+    22 00000002 66                          b db 01100110b 
+    23 00000003 00000000                    c dd 0
+    24                                  
+    25                                  ; our code starts here
+    26                                  segment code use32 class=code
+    27                                      start:
+    28 00000000 BB00000000                      mov ebx,0 ; the result will be on ebx
+    29                                          
+    30 00000005 66A1[00000000]                  mov ax,[a]
+    31 0000000B 6625C003                        and ax,0000001111000000b ; we isolate the bits 6-9 of A
+    32 0000000F B106                            mov cl,6
+    33 00000011 66D3C8                          ror ax,cl ; we rotate 6 positions to the right
+    34 00000014 6609C3                          or bx,ax  ; we store the bits in the result
+    35                                          
+    36 00000017 6683CB30                        or bx,0000000000110000b ; we put the value 1 on bits 4-5
+    37                                          
+    38 0000001B 66B80000                        mov ax,0
+    39 0000001F A0[02000000]                    mov al,[b]
+    40 00000024 6683E006                        and ax,0000000000000110b ; we isolate the bits 1-2 of B
+    41 00000028 B105                            mov cl,5
+    42 0000002A 66D3C0                          rol ax,cl ; we rotate 5 positions to the left
+    43 0000002D 6609C3                          or bx,ax ; we store the bits in the result
+    44                                          
+    45 00000030 B800000000                      mov eax,0
+    46 00000035 66A1[00000000]                  mov ax,[a]
+    47 0000003B B108                            mov cl,8
+    48 0000003D D3C0                            rol eax,cl ; we rotate 8 positions to the left
+    49 0000003F 09C3                            or ebx,eax ; we store the bits in the result
+    50                                          
+    51 00000041 B800000000                      mov eax,0
+    52 00000046 A0[02000000]                    mov al,[b]
+    53 0000004B B118                            mov cl,24
+    54 0000004D D3C0                            rol eax,cl ; we rotate 24 positions to the left
+    55 0000004F 09C3                            or ebx,eax ; we store the bits in the result
+    56                                          
+    57 00000051 891D[03000000]                  mov[c],ebx 
+    58                                      
+    59                                          ; exit(0)
+    60 00000057 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    61 00000059 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

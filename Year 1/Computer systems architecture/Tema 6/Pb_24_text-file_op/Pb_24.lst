@@ -1,0 +1,84 @@
+     1                                  ;   A file name and a text (defined in data segment) are given. The text contains lowercase letters, uppercase letters, digits and special characters. 
+     2                                  ;   Replace all digits from the text with character 'C'. Create a file with the given name and write the generated text to file.
+     3                                  
+     4                                  bits 32
+     5                                  
+     6                                  global start
+     7                                  
+     8                                  ; declare external functions needed by our program
+     9                                  extern exit, fopen, fprintf, fclose, printf, fread, fwrite, remove, rename
+    10                                  import exit msvcrt.dll
+    11                                  import fopen msvcrt.dll
+    12                                  import fprintf msvcrt.dll
+    13                                  import fclose msvcrt.dll
+    14                                  import printf msvcrt.dll
+    15                                  import fread msvcrt.dll
+    16                                  import fwrite msvcrt.dll
+    17                                  import remove msvcrt.dll
+    18                                  import rename msvcrt.dll
+    19                                  
+    20                                  ; our data is declared here (the variables needed by our program)
+    21                                  segment data use32 class=data
+    22                                  
+    23                                      
+    24 00000000 612E74787400                fileName db "a.txt", 0
+    25 00000006 6D39396162313D5B33-         text db "m99ab1=[3*7"
+    25 0000000F 2A37               
+    26                                      len equ $-text
+    27 00000011 00<rept>                    res_text times len+1 db 0
+    28 0000001D FFFFFFFF                    file_descriptor dd -1
+    29 00000021 7700                        accessModeWrite db "w", 0
+    30 00000023 00                          element db 0
+    31                                      
+    32                                  ; our code starts here
+    33                                  segment code use32 class=code
+    34                                  start:  
+    35                                  
+    36 00000000 B90B000000                  mov ecx,len
+    37 00000005 BE[06000000]                mov esi,text
+    38 0000000A BF[11000000]                mov edi,res_text
+    39 0000000F FC                          cld
+    40                                      repeta:
+    41 00000010 B200                            mov dl,0  ; condition counter
+    42 00000012 AC                              lodsb
+    43 00000013 3C30                            cmp al,30h
+    44 00000015 7202                            jb sari1
+    45 00000017 FEC2                                inc dl ; condition met dl = 1
+    46                                          
+    47                                          sari1:
+    48 00000019 3C39                            cmp al,39h
+    49 0000001B 7702                            ja sari2
+    50 0000001D FEC2                                inc dl ; conditioin met dl = 2
+    51                                          
+    52                                          sari2:
+    53 0000001F 80FA02                          cmp dl,2   ; dl = 2 if the ascii code of the character is between 30 and 39 inclusively
+    54 00000022 7502                            jne sari3  ; if dl == 2 change the current byte to ascii code of C
+    55 00000024 B043                                mov al,"C"
+    56                                          
+    57                                          sari3:
+    58 00000026 AA                              stosb ; store the current byte in the resulting text
+    59 00000027 E2E7                            loop repeta
+    60                                          
+    61                                          
+    62                                      ; Opening the write file - a.txt
+    63 00000029 68[21000000]                push dword accessModeWrite
+    64 0000002E 68[00000000]                push dword fileName
+    65 00000033 FF15[00000000]              call [fopen]  
+    66 00000039 83C408                      add esp, 4 * 2
+    67                                      
+    68 0000003C A3[1D000000]                mov [file_descriptor], eax
+    69 00000041 83F800                      cmp eax,0     ; checking if the file creation is valid
+    70 00000044 7423                        je IncorectCreation
+    71                                      
+    72 00000046 68[11000000]                push dword res_text   ; writting the resulting text in the file
+    73 0000004B FF35[1D000000]              push dword [file_descriptor]
+    74 00000051 FF15[00000000]              call [fprintf]
+    75 00000057 83C408                      add esp, 4*2
+    76                                      
+    77 0000005A FF35[1D000000]              push dword [file_descriptor]
+    78 00000060 FF15[00000000]              call [fclose]    ; closing the file
+    79 00000066 83C404                      add esp, 4
+    80                                      
+    81                                      IncorectCreation:
+    82 00000069 6A00                        push dword 0      
+    83 0000006B FF15[00000000]              call [exit]

@@ -1,0 +1,93 @@
+     1                                  ;A text file is given. Read the content of the file, count the number of consonants and display the result on the screen. The name of text file is defined in the data segment.
+     2                                  bits 32 ; assembling for the 32 bits architecture
+     3                                  
+     4                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     5                                  global start        
+     6                                  
+     7                                  ; declare external functions needed by our program
+     8                                  extern exit,fread,fclose,fopen,printf               ; tell nasm that exit exists even if we won't be defining it
+     9                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    10                                  import fread msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    11                                  import fclose msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    12                                  import fopen msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    13                                  import printf msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    14                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    15                                  
+    16                                  ; our data is declared here (the variables needed by our program)
+    17                                  segment data use32 class=data
+    18 00000000 00000000                    num_of_consonants dd 0
+    19 00000004 00000000                    file_descriptor dd 0
+    20 00000008 66696C652E74787400          file_name db "file.txt",0
+    21 00000011 7200                        read_mode db "r",0
+    22 00000013 <res 000007D0>              text resb 2000
+    23 000007E3 00000000                    characters_read dd 0
+    24 000007E7 6165696F754145494F-         compare_characters db "aeiouAEIOU",0
+    24 000007F0 5500               
+    25                                      vowel_str equ $- compare_characters
+    26 000007F2 4E722E206F6620636F-         print_format db "Nr. of consonants in file is %d.",0
+    26 000007FB 6E736F6E616E747320-
+    26 00000804 696E2066696C652069-
+    26 0000080D 732025642E00       
+    27                                  
+    28                                  ; our code starts here
+    29                                  segment code use32 class=code
+    30                                      start:
+    31 00000000 68[11000000]                    push dword read_mode
+    32 00000005 68[08000000]                    push dword file_name
+    33 0000000A FF15[00000000]                  call [fopen]
+    34 00000010 83C408                          add esp,4*2
+    35                                          
+    36 00000013 83F800                          cmp eax,0
+    37 00000016 7474                            je Gata
+    38 00000018 A3[04000000]                    mov [file_descriptor],eax
+    39                                          Reading_loop:
+    40 0000001D FF35[04000000]                      push dword [file_descriptor]
+    41 00000023 6A64                                push dword 100
+    42 00000025 6A01                                push dword 1
+    43 00000027 68[13000000]                        push dword text
+    44 0000002C FF15[00000000]                      call [fread]
+    45 00000032 83C410                              add esp,4*4
+    46                                              
+    47 00000035 0105[E3070000]                      add [characters_read],eax
+    48 0000003B 83F800                              cmp eax,0
+    49 0000003E 75DD                                jne Reading_loop
+    50                                          
+    51 00000040 8B0D[E3070000]                  mov ecx,[characters_read]
+    52 00000046 BE[13000000]                    mov esi,text
+    53                                          Compare_characters:
+    54 0000004B 51                                  push ecx
+    55 0000004C B90B000000                          mov ecx,vowel_str
+    56 00000051 AC                                  lodsb
+    57 00000052 BF[E7070000]                        mov edi,compare_characters
+    58                                              compare:
+    59 00000057 AE                                      scasb
+    60 00000058 741B                                    je Stop
+    61 0000005A E2FB                                    loop compare
+    62                                              Verify_if_character:
+    63 0000005C 3C41                                    cmp Al,"A"
+    64 0000005E 7215                                    jb Stop
+    65 00000060 3C7A                                    cmp AL,"z"
+    66 00000062 7711                                    ja Stop
+    67 00000064 3C5A                                    cmp AL,"Z"
+    68 00000066 7606                                    jbe Is_character
+    69 00000068 3C61                                    cmp AL,"a"
+    70 0000006A 7302                                    jae Is_character
+    71 0000006C EB07                                    jmp Stop
+    72                                                  Is_character:
+    73 0000006E 8305[00000000]01                    add dword [num_of_consonants],1
+    74                                              Stop:
+    75 00000075 59                                  pop ecx
+    76 00000076 E2D3                                loop Compare_characters
+    77                                          
+    78 00000078 FF35[00000000]                  push dword [num_of_consonants]
+    79 0000007E 68[F2070000]                    push dword print_format
+    80 00000083 FF15[00000000]                  call [printf]
+    81 00000089 83C408                          add esp,4*2
+    82                                                  
+    83                                              
+    84                                          
+    85                                          Gata:
+    86                                      
+    87                                          ; exit(0)
+    88 0000008C 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    89 0000008E FF15[00000000]                  call    [exit]       ; call exit to terminate the program

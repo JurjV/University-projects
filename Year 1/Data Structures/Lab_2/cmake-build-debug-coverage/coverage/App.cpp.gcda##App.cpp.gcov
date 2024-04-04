@@ -1,0 +1,28 @@
+        -:    0:Source:C:/Users/remeti1/Desktop/Faculta/Data_structures/Lab_2/App.cpp
+        -:    0:Graph:C:\Users\remeti1\Desktop\Faculta\Data_structures\Lab_2\cmake-build-debug-coverage\CMakeFiles\Lab_2.dir\App.cpp.gcno
+        -:    0:Data:C:\Users\remeti1\Desktop\Faculta\Data_structures\Lab_2\cmake-build-debug-coverage\CMakeFiles\Lab_2.dir\App.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "SortedBag.h"
+        -:    2:#include "SortedBagIterator.h"
+        -:    3:#include "RemoveAllTest.h"
+        -:    4:#include <iostream>
+        -:    5:#include "ShortTest.h"
+        -:    6:#include "ExtendedTest.h"
+        -:    7:
+        -:    8:using namespace std;
+        -:    9:
+function main called 1 returned 100% blocks executed 100%
+        1:   10:int main() {
+        1:   11:	testAll();
+        1:   11-block  0
+call    0 returned 1
+        1:   12:	testAllExtended();
+call    0 returned 1
+        1:   13:    TestRemoveAll();
+call    0 returned 1
+        -:   14:	
+        1:   15:	printf("Test over!\n");
+call    0 returned 1
+        1:   16:	system("pause");
+call    0 returned 1
+        1:   17:}

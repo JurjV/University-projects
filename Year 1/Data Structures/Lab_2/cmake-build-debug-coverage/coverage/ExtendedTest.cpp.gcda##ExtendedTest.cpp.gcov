@@ -1,0 +1,1674 @@
+        -:    0:Source:C:/Users/remeti1/Desktop/Faculta/Data_structures/Lab_2/ExtendedTest.cpp
+        -:    0:Graph:C:\Users\remeti1\Desktop\Faculta\Data_structures\Lab_2\cmake-build-debug-coverage\CMakeFiles\Lab_2.dir\ExtendedTest.cpp.gcno
+        -:    0:Data:C:\Users\remeti1\Desktop\Faculta\Data_structures\Lab_2\cmake-build-debug-coverage\CMakeFiles\Lab_2.dir\ExtendedTest.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "ShortTest.h"
+        -:    2:#include "SortedBag.h"
+        -:    3:#include "SortedBagIterator.h"
+        -:    4:#include <assert.h>
+        -:    5:#include <iostream>
+        -:    6:#include <exception>
+        -:    7:
+        -:    8:using namespace std;
+        -:    9:
+function _Z9relation2ii called 1014094 returned 100% blocks executed 100%
+  1014094:   10:bool relation2(TComp r1, TComp r2) {
+  1014094:   11:	return r1 <= r2;
+  1014094:   11-block  0
+        -:   12:}
+        -:   13:
+function _Z9relation3ii called 1125616 returned 100% blocks executed 100%
+  1125616:   14:bool relation3(TComp r1, TComp r2) {
+  1125616:   15:	return r1 >= r2;
+  1125616:   15-block  0
+        -:   16:}
+        -:   17:
+        -:   18:
+function _Z10testCreatev called 1 returned 100% blocks executed 70%
+        1:   19:void testCreate() {
+        1:   20:	cout << "Test create" << endl;
+        1:   20-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   20-block  1
+call    3 returned 1
+branch  4 taken 1 (fallthrough)
+branch  5 taken 0 (throw)
+        1:   21:	SortedBag sb(relation2);
+        1:   21-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   22:	assert(sb.isEmpty() == true);
+        1:   22-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   22-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   22-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+        1:   22-block  3
+    %%%%%:   22-block  4
+       1*:   23:	assert(sb.size() == 0);
+        1:   23-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   23-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   23-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+        1:   23-block  3
+    %%%%%:   23-block  4
+        -:   24:
+       41:   25:	for (int i = -10; i < 30; i++) {
+        1:   25-block  0
+       40:   25-block  1
+       41:   25-block  2
+branch  0 taken 40
+branch  1 taken 1 (fallthrough)
+      40*:   26:		assert(sb.remove(i) == false);
+       40:   26-block  0
+call    0 returned 40
+branch  1 taken 40 (fallthrough)
+branch  2 taken 0 (throw)
+       40:   26-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 40
+    %%%%%:   26-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+       40:   26-block  3
+    %%%%%:   26-block  4
+        -:   27:	}
+       41:   28:	for (int i = -10; i < 30; i++) {
+        1:   28-block  0
+       40:   28-block  1
+       41:   28-block  2
+branch  0 taken 40
+branch  1 taken 1 (fallthrough)
+      40*:   29:		assert(sb.search(i) == false);
+       40:   29-block  0
+call    0 returned 40
+branch  1 taken 40 (fallthrough)
+branch  2 taken 0 (throw)
+       40:   29-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 40
+    %%%%%:   29-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+       40:   29-block  3
+    %%%%%:   29-block  4
+        -:   30:	}
+       41:   31:	for (int i = -10; i < 30; i++) {
+        1:   31-block  0
+       40:   31-block  1
+       41:   31-block  2
+branch  0 taken 40
+branch  1 taken 1 (fallthrough)
+      40*:   32:		assert(sb.nrOccurrences(i) == 0);
+       40:   32-block  0
+call    0 returned 40
+branch  1 taken 40 (fallthrough)
+branch  2 taken 0 (throw)
+       40:   32-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 40
+    %%%%%:   32-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+       40:   32-block  3
+    %%%%%:   32-block  4
+        -:   33:	}
+        1:   34:	SortedBagIterator it = sb.iterator();
+        1:   34-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   35:	assert(it.valid() == false);
+        1:   35-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   35-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   35-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+        1:   35-block  3
+    %%%%%:   35-block  4
+        -:   36:	try {
+        1:   37:		it.getCurrent();
+        1:   37-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1 (throw)
+    #####:   38:		assert(false);
+    %%%%%:   38-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:   39:	}
+        1:   40:	catch (exception&) {
+        1:   40-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+        1:   40-block  1
+call    2 returned 1
+        -:   41:		assert(true);
+        1:   42:	}
+call    0 returned 1
+        -:   43:	try {
+        1:   44:		it.next();
+        1:   44-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1 (throw)
+    #####:   45:		assert(false);
+    %%%%%:   45-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:   46:	}
+        1:   47:	catch (exception&) {
+        1:   47-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+        1:   47-block  1
+call    2 returned 1
+        -:   48:		assert(true);
+        1:   49:	}
+call    0 returned 1
+        1:   50:}
+        1:   50-block  0
+call    0 returned 1
+    $$$$$:   50-block  1
+call    1 never executed
+        -:   51:
+function _Z12testIteratorR9SortedBagPFbiiE called 8 returned 100% blocks executed 72%
+        8:   52:void testIterator(SortedBag& sb, Relation rel) {
+        8:   53:	SortedBagIterator it = sb.iterator();
+        8:   53-block  0
+call    0 returned 8
+branch  1 taken 8 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   54:	TComp e1;
+        -:   55:	TComp e2;
+        8:   56:	if (it.valid()) {
+        8:   56-block  0
+call    0 returned 8
+branch  1 taken 8 (fallthrough)
+branch  2 taken 0 (throw)
+        8:   56-block  1
+branch  3 taken 8 (fallthrough)
+branch  4 taken 0
+        8:   57:		e1 = it.getCurrent();
+        8:   57-block  0
+call    0 returned 8
+branch  1 taken 8 (fallthrough)
+branch  2 taken 0 (throw)
+        8:   58:		it.next();
+        8:   58-block  0
+call    0 returned 8
+branch  1 taken 8 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   59:	}
+     3304:   60:	while (it.valid()) {
+        8:   60-block  0
+     3304:   60-block  1
+call    0 returned 3304
+branch  1 taken 3304 (fallthrough)
+branch  2 taken 0 (throw)
+     3304:   60-block  2
+branch  3 taken 3296
+branch  4 taken 8 (fallthrough)
+     3296:   61:		e2 = e1;
+     3296:   62:		e1 = it.getCurrent();
+     3296:   62-block  0
+call    0 returned 3296
+branch  1 taken 3296 (fallthrough)
+branch  2 taken 0 (throw)
+     3296:   63:		it.next();
+     3296:   63-block  0
+call    0 returned 3296
+branch  1 taken 3296 (fallthrough)
+branch  2 taken 0 (throw)
+    3296*:   64:		assert(sb.search(e1) == true);
+     3296:   64-block  0
+call    0 returned 3296
+branch  1 taken 3296 (fallthrough)
+branch  2 taken 0 (throw)
+     3296:   64-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 3296
+    %%%%%:   64-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+     3296:   64-block  3
+    %%%%%:   64-block  4
+    3296*:   65:		assert(sb.search(e2) == true);
+     3296:   65-block  0
+call    0 returned 3296
+branch  1 taken 3296 (fallthrough)
+branch  2 taken 0 (throw)
+     3296:   65-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 3296
+    %%%%%:   65-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+     3296:   65-block  3
+    %%%%%:   65-block  4
+    3296*:   66:		assert(sb.nrOccurrences(e1) > 0);
+     3296:   66-block  0
+call    0 returned 3296
+branch  1 taken 3296 (fallthrough)
+branch  2 taken 0 (throw)
+     3296:   66-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 3296
+    %%%%%:   66-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+     3296:   66-block  3
+    %%%%%:   66-block  4
+    3296*:   67:		assert(sb.nrOccurrences(e2) > 0);
+     3296:   67-block  0
+call    0 returned 3296
+branch  1 taken 3296 (fallthrough)
+branch  2 taken 0 (throw)
+     3296:   67-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 3296
+    %%%%%:   67-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+     3296:   67-block  3
+    %%%%%:   67-block  4
+    3296*:   68:		assert(rel(e2, e1));
+     3296:   68-block  0
+call    0 returned 3296
+branch  1 taken 3296 (fallthrough)
+branch  2 taken 0 (throw)
+     3296:   68-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 3296
+    %%%%%:   68-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+     3296:   68-block  3
+    %%%%%:   68-block  4
+        -:   69:	}
+        -:   70:	try {
+        8:   71:		it.getCurrent();
+        8:   71-block  0
+call    0 returned 8
+branch  1 taken 0 (fallthrough)
+branch  2 taken 8 (throw)
+    #####:   72:		assert(false);
+    %%%%%:   72-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:   73:	}
+        8:   74:	catch (exception&) {
+        8:   74-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 8
+        8:   74-block  1
+call    2 returned 8
+        -:   75:		assert(true);
+        8:   76:	}
+call    0 returned 8
+        -:   77:	try {
+        8:   78:		it.next();
+        8:   78-block  0
+call    0 returned 8
+branch  1 taken 0 (fallthrough)
+branch  2 taken 8 (throw)
+    #####:   79:		assert(false);
+    %%%%%:   79-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:   80:	}
+        8:   81:	catch (exception&) {
+        8:   81-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 8
+        8:   81-block  1
+call    2 returned 8
+        -:   82:		assert(true);
+        8:   83:	}
+call    0 returned 8
+        8:   84:	it.first();
+        8:   84-block  0
+call    0 returned 8
+branch  1 taken 8 (fallthrough)
+branch  2 taken 0 (throw)
+       8*:   85:	assert(it.valid() == true);
+        8:   85-block  0
+call    0 returned 8
+branch  1 taken 8 (fallthrough)
+branch  2 taken 0 (throw)
+        8:   85-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 8
+    %%%%%:   85-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+        8:   85-block  3
+    %%%%%:   85-block  4
+        8:   86:	it.first();
+        8:   86-block  0
+call    0 returned 8
+branch  1 taken 8 (fallthrough)
+branch  2 taken 0 (throw)
+        8:   87:	int count = 0;
+     3312:   88:	while (it.valid()) {
+        8:   88-block  0
+     3312:   88-block  1
+call    0 returned 3312
+branch  1 taken 3312 (fallthrough)
+branch  2 taken 0 (throw)
+     3312:   88-block  2
+branch  3 taken 3304
+branch  4 taken 8 (fallthrough)
+     3304:   89:		count++;
+     3304:   90:		it.next();
+     3304:   90-block  0
+call    0 returned 3304
+branch  1 taken 3304 (fallthrough)
+branch  2 taken 0 (throw)
+        -:   91:	}
+       8*:   92:	assert(count == sb.size());
+        8:   92-block  0
+call    0 returned 8
+branch  1 taken 8 (fallthrough)
+branch  2 taken 0 (throw)
+        8:   92-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 8
+    %%%%%:   92-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+        8:   92-block  3
+    %%%%%:   92-block  4
+        8:   93:}
+        8:   93-block  0
+        -:   94:
+function _Z7testAddPFbiiE called 2 returned 100% blocks executed 72%
+        2:   95:void testAdd(Relation r) {
+        2:   96:	cout << "Test add" << endl;
+        2:   96-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:   96-block  1
+call    3 returned 2
+branch  4 taken 2 (fallthrough)
+branch  5 taken 0 (throw)
+        2:   97:	SortedBag sb(r);
+        2:   97-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+      202:   98:	for (int i = 0; i < 100; i++) {
+        2:   98-block  0
+      200:   98-block  1
+      202:   98-block  2
+branch  0 taken 200
+branch  1 taken 2 (fallthrough)
+        -:   99:
+      200:  100:		sb.add(i);
+      200:  100-block  0
+call    0 returned 200
+branch  1 taken 200 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  101:	}
+       2*:  102:	assert(sb.size() == 100);
+        2:  102-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  102-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 2
+    %%%%%:  102-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+        2:  102-block  3
+    %%%%%:  102-block  4
+       2*:  103:	assert(sb.isEmpty() == false);
+        2:  103-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  103-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 2
+    %%%%%:  103-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+        2:  103-block  3
+    %%%%%:  103-block  4
+        2:  104:	testIterator(sb, r);
+        2:  104-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  105:
+      804:  106:	for (int i = 200; i >= -200; i--) {
+        2:  106-block  0
+      802:  106-block  1
+      804:  106-block  2
+branch  0 taken 802
+branch  1 taken 2 (fallthrough)
+      802:  107:		sb.add(i);
+      802:  107-block  0
+call    0 returned 802
+branch  1 taken 802 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  108:	}
+       2*:  109:	assert(sb.size() == 501);
+        2:  109-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  109-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 2
+    %%%%%:  109-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+        2:  109-block  3
+    %%%%%:  109-block  4
+        2:  110:	testIterator(sb, r);
+        2:  110-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  111:
+     1202:  112:	for (int i = -300; i < 300; i++) {
+        2:  112-block  0
+     1200:  112-block  1
+     1202:  112-block  2
+branch  0 taken 1200
+branch  1 taken 2 (fallthrough)
+     1200:  113:		bool exista = sb.search(i);
+     1200:  113-block  0
+call    0 returned 1200
+branch  1 taken 1200 (fallthrough)
+branch  2 taken 0 (throw)
+     1200:  114:		int nrA = sb.nrOccurrences(i);
+     1200:  114-block  0
+call    0 returned 1200
+branch  1 taken 1200 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  115:
+     1200:  116:		if (i < -200 || i > 200) {
+     1200:  116-block  0
+branch  0 taken 1000 (fallthrough)
+branch  1 taken 200
+     1000:  116-block  1
+branch  2 taken 198 (fallthrough)
+branch  3 taken 802
+     398*:  117:			assert(exista == false);
+      398:  117-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 398
+    %%%%%:  117-block  1
+call    2 never executed
+branch  3 never executed
+branch  4 never executed
+      398:  117-block  2
+    %%%%%:  117-block  3
+     398*:  118:			assert(nrA == 0);
+      398:  118-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 398
+    %%%%%:  118-block  1
+call    2 never executed
+branch  3 never executed
+branch  4 never executed
+      398:  118-block  2
+    %%%%%:  118-block  3
+        -:  119:		}
+      802:  120:		else if (i >= -200 && i < 0) {
+      802:  120-block  0
+branch  0 taken 802 (fallthrough)
+branch  1 taken 0
+      802:  120-block  1
+branch  2 taken 400 (fallthrough)
+branch  3 taken 402
+     400*:  121:			assert(exista == true);
+      400:  121-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 400
+    %%%%%:  121-block  1
+call    2 never executed
+branch  3 never executed
+branch  4 never executed
+      400:  121-block  2
+    %%%%%:  121-block  3
+     400*:  122:			assert(nrA == 1);
+      400:  122-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 400
+    %%%%%:  122-block  1
+call    2 never executed
+branch  3 never executed
+branch  4 never executed
+      400:  122-block  2
+    %%%%%:  122-block  3
+        -:  123:		}
+      402:  124:		else if (i >= 0 && i < 100) {
+      402:  124-block  0
+branch  0 taken 402 (fallthrough)
+branch  1 taken 0
+      402:  124-block  1
+branch  2 taken 200 (fallthrough)
+branch  3 taken 202
+     200*:  125:			assert(exista == true);
+      200:  125-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 200
+    %%%%%:  125-block  1
+call    2 never executed
+branch  3 never executed
+branch  4 never executed
+      200:  125-block  2
+    %%%%%:  125-block  3
+     200*:  126:			assert(nrA == 2);
+      200:  126-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 200
+    %%%%%:  126-block  1
+call    2 never executed
+branch  3 never executed
+branch  4 never executed
+      200:  126-block  2
+    %%%%%:  126-block  3
+        -:  127:		}
+      202:  128:		else if (i >= 100 && i <= 200) {
+      202:  128-block  0
+branch  0 taken 202 (fallthrough)
+branch  1 taken 0
+      202:  128-block  1
+branch  2 taken 202 (fallthrough)
+branch  3 taken 0
+     202*:  129:			assert(exista == true);
+      202:  129-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 202
+    %%%%%:  129-block  1
+call    2 never executed
+branch  3 never executed
+branch  4 never executed
+      202:  129-block  2
+    %%%%%:  129-block  3
+     202*:  130:			assert(nrA == 1);
+      202:  130-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 202
+    %%%%%:  130-block  1
+call    2 never executed
+branch  3 never executed
+branch  4 never executed
+      202:  130-block  2
+    %%%%%:  130-block  3
+        -:  131:		}
+        -:  132:	}
+        -:  133:
+      202:  134:	for (int i = 0; i < 100; i++) {
+        2:  134-block  0
+      200:  134-block  1
+      202:  134-block  2
+branch  0 taken 200
+branch  1 taken 2 (fallthrough)
+      200:  135:		sb.add(0);
+      200:  135-block  0
+call    0 returned 200
+branch  1 taken 200 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  136:	}
+       2*:  137:	assert(sb.nrOccurrences(0) == 102);
+        2:  137-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  137-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 2
+    %%%%%:  137-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+        2:  137-block  3
+    %%%%%:  137-block  4
+        2:  138:	testIterator(sb, r);
+        2:  138-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  139:
+        2:  140:	SortedBag sb2(r);
+        2:  140-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+      302:  141:	for (int i = 0; i < 300; i = i + 2) {
+        2:  141-block  0
+      300:  141-block  1
+      302:  141-block  2
+branch  0 taken 300
+branch  1 taken 2 (fallthrough)
+      300:  142:		sb2.add(i);
+      300:  142-block  0
+call    0 returned 300
+branch  1 taken 300 (fallthrough)
+branch  2 taken 0 (throw)
+      300:  143:		sb2.add(2 * i);
+      300:  143-block  0
+call    0 returned 300
+branch  1 taken 300 (fallthrough)
+branch  2 taken 0 (throw)
+      300:  144:		sb2.add(-2 * i);
+      300:  144-block  0
+call    0 returned 300
+branch  1 taken 300 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  145:	}
+       2*:  146:	assert(sb2.size() == 450);
+        2:  146-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  146-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 2
+    %%%%%:  146-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+        2:  146-block  3
+    %%%%%:  146-block  4
+        2:  147:	testIterator(sb2, r);
+        2:  147-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  148:}
+        2:  148-block  0
+call    0 returned 2
+call    1 returned 2
+    $$$$$:  148-block  1
+call    2 never executed
+    $$$$$:  148-block  2
+call    3 never executed
+        -:  149:
+function _Z10testRemovePFbiiE called 2 returned 100% blocks executed 68%
+        2:  150:void testRemove(Relation r) {
+        2:  151:	cout << "Test remove" << endl;
+        2:  151-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  151-block  1
+call    3 returned 2
+branch  4 taken 2 (fallthrough)
+branch  5 taken 0 (throw)
+        2:  152:	SortedBag sb(r);
+        2:  152-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+      402:  153:	for (int i = -100; i < 100; i++) {
+        2:  153-block  0
+      400:  153-block  1
+      402:  153-block  2
+branch  0 taken 400
+branch  1 taken 2 (fallthrough)
+     400*:  154:		assert(sb.remove(i) == false);
+      400:  154-block  0
+call    0 returned 400
+branch  1 taken 400 (fallthrough)
+branch  2 taken 0 (throw)
+      400:  154-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 400
+    %%%%%:  154-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      400:  154-block  3
+    %%%%%:  154-block  4
+     400*:  155:		assert(sb.search(i) == false);
+      400:  155-block  0
+call    0 returned 400
+branch  1 taken 400 (fallthrough)
+branch  2 taken 0 (throw)
+      400:  155-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 400
+    %%%%%:  155-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      400:  155-block  3
+    %%%%%:  155-block  4
+     400*:  156:		assert(sb.nrOccurrences(i) == 0);
+      400:  156-block  0
+call    0 returned 400
+branch  1 taken 400 (fallthrough)
+branch  2 taken 0 (throw)
+      400:  156-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 400
+    %%%%%:  156-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      400:  156-block  3
+    %%%%%:  156-block  4
+        -:  157:	}
+       2*:  158:	assert(sb.isEmpty() == true);
+        2:  158-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  158-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 2
+    %%%%%:  158-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+        2:  158-block  3
+    %%%%%:  158-block  4
+        -:  159:
+      402:  160:	for (int i = -100; i < 100; i++) {
+        2:  160-block  0
+      400:  160-block  1
+      402:  160-block  2
+branch  0 taken 400
+branch  1 taken 2 (fallthrough)
+      400:  161:		sb.add(i);
+      400:  161-block  0
+call    0 returned 400
+branch  1 taken 400 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  162:	}
+       2*:  163:	assert(sb.size() == 200);
+        2:  163-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  163-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 2
+    %%%%%:  163-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+        2:  163-block  3
+    %%%%%:  163-block  4
+      202:  164:	for (int i = -100; i < 100; i = i + 2) {
+        2:  164-block  0
+      200:  164-block  1
+      202:  164-block  2
+branch  0 taken 200
+branch  1 taken 2 (fallthrough)
+     200*:  165:		assert(sb.remove(i) == true);
+      200:  165-block  0
+call    0 returned 200
+branch  1 taken 200 (fallthrough)
+branch  2 taken 0 (throw)
+      200:  165-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 200
+    %%%%%:  165-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      200:  165-block  3
+    %%%%%:  165-block  4
+        -:  166:	}
+       2*:  167:	assert(sb.size() == 100);
+        2:  167-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  167-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 2
+    %%%%%:  167-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+        2:  167-block  3
+    %%%%%:  167-block  4
+      402:  168:	for (int i = -100; i < 100; i++) {
+        2:  168-block  0
+      400:  168-block  1
+      402:  168-block  2
+branch  0 taken 400
+branch  1 taken 2 (fallthrough)
+      400:  169:		if (i % 2 == 0) {
+      400:  169-block  0
+branch  0 taken 200 (fallthrough)
+branch  1 taken 200
+     200*:  170:			assert(sb.nrOccurrences(i) == 0);
+      200:  170-block  0
+call    0 returned 200
+branch  1 taken 200 (fallthrough)
+branch  2 taken 0 (throw)
+      200:  170-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 200
+    %%%%%:  170-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      200:  170-block  3
+    %%%%%:  170-block  4
+     200*:  171:			assert(sb.search(i) == false);
+      200:  171-block  0
+call    0 returned 200
+branch  1 taken 200 (fallthrough)
+branch  2 taken 0 (throw)
+      200:  171-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 200
+    %%%%%:  171-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      200:  171-block  3
+    %%%%%:  171-block  4
+     200*:  172:			assert(sb.remove(i) == false);
+      200:  172-block  0
+call    0 returned 200
+branch  1 taken 200 (fallthrough)
+branch  2 taken 0 (throw)
+      200:  172-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 200
+    %%%%%:  172-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      200:  172-block  3
+    %%%%%:  172-block  4
+        -:  173:		}
+        -:  174:		else {
+     200*:  175:			assert(sb.nrOccurrences(i) == 1);
+      200:  175-block  0
+call    0 returned 200
+branch  1 taken 200 (fallthrough)
+branch  2 taken 0 (throw)
+      200:  175-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 200
+    %%%%%:  175-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      200:  175-block  3
+    %%%%%:  175-block  4
+     200*:  176:			assert(sb.search(i) == true);
+      200:  176-block  0
+call    0 returned 200
+branch  1 taken 200 (fallthrough)
+branch  2 taken 0 (throw)
+      200:  176-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 200
+    %%%%%:  176-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      200:  176-block  3
+    %%%%%:  176-block  4
+        -:  177:		}
+      400:  178:		sb.add(i);
+      400:  178-block  0
+call    0 returned 400
+branch  1 taken 400 (fallthrough)
+branch  2 taken 0 (throw)
+      400:  179:		sb.add(i);
+      400:  179-block  0
+call    0 returned 400
+branch  1 taken 400 (fallthrough)
+branch  2 taken 0 (throw)
+      400:  180:		sb.add(i);
+      400:  180-block  0
+call    0 returned 400
+branch  1 taken 400 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  181:	}
+       2*:  182:	assert(sb.size() == 700);
+        2:  182-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  182-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 2
+    %%%%%:  182-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+        2:  182-block  3
+    %%%%%:  182-block  4
+      802:  183:	for (int i = -200; i < 200; i++) {
+        2:  183-block  0
+      800:  183-block  1
+      802:  183-block  2
+branch  0 taken 800
+branch  1 taken 2 (fallthrough)
+      800:  184:		if (i < -100 || i >= 100) {
+      800:  184-block  0
+branch  0 taken 600 (fallthrough)
+branch  1 taken 200
+      600:  184-block  1
+branch  2 taken 200 (fallthrough)
+branch  3 taken 400
+     400*:  185:			assert(sb.search(i) == false);
+      400:  185-block  0
+call    0 returned 400
+branch  1 taken 400 (fallthrough)
+branch  2 taken 0 (throw)
+      400:  185-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 400
+    %%%%%:  185-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      400:  185-block  3
+    %%%%%:  185-block  4
+     400*:  186:			assert(sb.nrOccurrences(i) == 0);
+      400:  186-block  0
+call    0 returned 400
+branch  1 taken 400 (fallthrough)
+branch  2 taken 0 (throw)
+      400:  186-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 400
+    %%%%%:  186-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      400:  186-block  3
+    %%%%%:  186-block  4
+     400*:  187:			assert(sb.remove(i) == false);
+      400:  187-block  0
+call    0 returned 400
+branch  1 taken 400 (fallthrough)
+branch  2 taken 0 (throw)
+      400:  187-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 400
+    %%%%%:  187-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      400:  187-block  3
+    %%%%%:  187-block  4
+        -:  188:		}
+      400:  189:		else if (i % 2 == 0) {
+      400:  189-block  0
+branch  0 taken 200 (fallthrough)
+branch  1 taken 200
+     200*:  190:			assert(sb.search(i) == true);
+      200:  190-block  0
+call    0 returned 200
+branch  1 taken 200 (fallthrough)
+branch  2 taken 0 (throw)
+      200:  190-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 200
+    %%%%%:  190-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      200:  190-block  3
+    %%%%%:  190-block  4
+     200*:  191:			assert(sb.nrOccurrences(i) == 3);
+      200:  191-block  0
+call    0 returned 200
+branch  1 taken 200 (fallthrough)
+branch  2 taken 0 (throw)
+      200:  191-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 200
+    %%%%%:  191-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      200:  191-block  3
+    %%%%%:  191-block  4
+     200*:  192:			assert(sb.remove(i) == true);
+      200:  192-block  0
+call    0 returned 200
+branch  1 taken 200 (fallthrough)
+branch  2 taken 0 (throw)
+      200:  192-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 200
+    %%%%%:  192-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      200:  192-block  3
+    %%%%%:  192-block  4
+     200*:  193:			assert(sb.remove(i) == true);
+      200:  193-block  0
+call    0 returned 200
+branch  1 taken 200 (fallthrough)
+branch  2 taken 0 (throw)
+      200:  193-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 200
+    %%%%%:  193-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      200:  193-block  3
+    %%%%%:  193-block  4
+     200*:  194:			assert(sb.remove(i) == true);
+      200:  194-block  0
+call    0 returned 200
+branch  1 taken 200 (fallthrough)
+branch  2 taken 0 (throw)
+      200:  194-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 200
+    %%%%%:  194-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      200:  194-block  3
+    %%%%%:  194-block  4
+     200*:  195:			assert(sb.remove(i) == false);
+      200:  195-block  0
+call    0 returned 200
+branch  1 taken 200 (fallthrough)
+branch  2 taken 0 (throw)
+      200:  195-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 200
+    %%%%%:  195-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      200:  195-block  3
+    %%%%%:  195-block  4
+        -:  196:		}
+        -:  197:		else {
+     200*:  198:			assert(sb.search(i) == true);
+      200:  198-block  0
+call    0 returned 200
+branch  1 taken 200 (fallthrough)
+branch  2 taken 0 (throw)
+      200:  198-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 200
+    %%%%%:  198-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      200:  198-block  3
+    %%%%%:  198-block  4
+     200*:  199:			assert(sb.nrOccurrences(i) == 4);
+      200:  199-block  0
+call    0 returned 200
+branch  1 taken 200 (fallthrough)
+branch  2 taken 0 (throw)
+      200:  199-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 200
+    %%%%%:  199-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      200:  199-block  3
+    %%%%%:  199-block  4
+     200*:  200:			assert(sb.remove(i) == true);
+      200:  200-block  0
+call    0 returned 200
+branch  1 taken 200 (fallthrough)
+branch  2 taken 0 (throw)
+      200:  200-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 200
+    %%%%%:  200-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      200:  200-block  3
+    %%%%%:  200-block  4
+     200*:  201:			assert(sb.remove(i) == true);
+      200:  201-block  0
+call    0 returned 200
+branch  1 taken 200 (fallthrough)
+branch  2 taken 0 (throw)
+      200:  201-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 200
+    %%%%%:  201-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      200:  201-block  3
+    %%%%%:  201-block  4
+     200*:  202:			assert(sb.remove(i) == true);
+      200:  202-block  0
+call    0 returned 200
+branch  1 taken 200 (fallthrough)
+branch  2 taken 0 (throw)
+      200:  202-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 200
+    %%%%%:  202-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      200:  202-block  3
+    %%%%%:  202-block  4
+     200*:  203:			assert(sb.remove(i) == true);
+      200:  203-block  0
+call    0 returned 200
+branch  1 taken 200 (fallthrough)
+branch  2 taken 0 (throw)
+      200:  203-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 200
+    %%%%%:  203-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      200:  203-block  3
+    %%%%%:  203-block  4
+     200*:  204:			assert(sb.remove(i) == false);
+      200:  204-block  0
+call    0 returned 200
+branch  1 taken 200 (fallthrough)
+branch  2 taken 0 (throw)
+      200:  204-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 200
+    %%%%%:  204-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      200:  204-block  3
+    %%%%%:  204-block  4
+        -:  205:		}
+        -:  206:	}
+        2:  207:	SortedBag sb2(r);
+        2:  207-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+     1604:  208:	for (int i = 300; i >= -500; i--) {
+        2:  208-block  0
+     1602:  208-block  1
+     1604:  208-block  2
+branch  0 taken 1602
+branch  1 taken 2 (fallthrough)
+     1602:  209:		sb2.add(i);
+     1602:  209-block  0
+call    0 returned 1602
+branch  1 taken 1602 (fallthrough)
+branch  2 taken 0 (throw)
+     1602:  210:		sb2.add(i * 2);
+     1602:  210-block  0
+call    0 returned 1602
+branch  1 taken 1602 (fallthrough)
+branch  2 taken 0 (throw)
+     1602:  211:		sb2.add(-2 * i);
+     1602:  211-block  0
+call    0 returned 1602
+branch  1 taken 1602 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  212:	}
+      402:  213:	for (int i = -100; i < 100; i++) {
+        2:  213-block  0
+      400:  213-block  1
+      402:  213-block  2
+branch  0 taken 400
+branch  1 taken 2 (fallthrough)
+    40400:  214:		for (int j = 0; j < 100; j++) {
+      400:  214-block  0
+    40000:  214-block  1
+    40400:  214-block  2
+branch  0 taken 40000
+branch  1 taken 400 (fallthrough)
+    40000:  215:			sb2.remove(i);
+    40000:  215-block  0
+call    0 returned 40000
+branch  1 taken 40000 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  216:		}
+        -:  217:	}
+      402:  218:	for (int i = -100; i < 100; i++) {
+        2:  218-block  0
+      400:  218-block  1
+      402:  218-block  2
+branch  0 taken 400
+branch  1 taken 2 (fallthrough)
+     400*:  219:		assert(sb2.nrOccurrences(i) == 0);
+      400:  219-block  0
+call    0 returned 400
+branch  1 taken 400 (fallthrough)
+branch  2 taken 0 (throw)
+      400:  219-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 400
+    %%%%%:  219-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      400:  219-block  3
+    %%%%%:  219-block  4
+     400*:  220:		assert(sb2.search(i) == false);
+      400:  220-block  0
+call    0 returned 400
+branch  1 taken 400 (fallthrough)
+branch  2 taken 0 (throw)
+      400:  220-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 400
+    %%%%%:  220-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+      400:  220-block  3
+    %%%%%:  220-block  4
+        -:  221:	}
+        2:  222:}
+        2:  222-block  0
+call    0 returned 2
+call    1 returned 2
+    $$$$$:  222-block  1
+call    2 never executed
+    $$$$$:  222-block  2
+call    3 never executed
+        -:  223:
+function _Z12testQuantityPFbiiE called 2 returned 100% blocks executed 80%
+        2:  224:void testQuantity(Relation r) {
+        2:  225:	cout << "Test quantity" << endl;
+        2:  225-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  225-block  1
+call    3 returned 2
+branch  4 taken 2 (fallthrough)
+branch  5 taken 0 (throw)
+        2:  226:	SortedBag sb(r);
+        2:  226-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+       22:  227:	for (int j = 0; j < 10; j++) {
+        2:  227-block  0
+       20:  227-block  1
+       22:  227-block  2
+branch  0 taken 20
+branch  1 taken 2 (fallthrough)
+       20:  228:		sb.add(0);
+       20:  228-block  0
+call    0 returned 20
+branch  1 taken 20 (fallthrough)
+branch  2 taken 0 (throw)
+     6000:  229:		for (int i = 1; i < 300; i++) {
+       20:  229-block  0
+     5980:  229-block  1
+     6000:  229-block  2
+branch  0 taken 5980
+branch  1 taken 20 (fallthrough)
+     5980:  230:			sb.add(i);
+     5980:  230-block  0
+call    0 returned 5980
+branch  1 taken 5980 (fallthrough)
+branch  2 taken 0 (throw)
+     5980:  231:			sb.add(-i);
+     5980:  231-block  0
+call    0 returned 5980
+branch  1 taken 5980 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  232:		}
+       20:  233:		sb.add(-3000);
+       20:  233-block  0
+call    0 returned 20
+branch  1 taken 20 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  234:	}
+        2:  235:	int count = 6000;
+       2*:  236:	assert(sb.size() == 6000);
+        2:  236-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  236-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 2
+    %%%%%:  236-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+        2:  236-block  3
+    %%%%%:  236-block  4
+    10002:  237:	for (int i = 0; i < 5000; i++) {
+        2:  237-block  0
+    10000:  237-block  1
+    10002:  237-block  2
+branch  0 taken 10000
+branch  1 taken 2 (fallthrough)
+    10000:  238:		TComp nr = rand() % 8000 - 4000;
+    10000:  238-block  0
+call    0 returned 10000
+    10000:  239:		if (sb.remove(nr) == true) {
+call    0 returned 10000
+branch  1 taken 10000 (fallthrough)
+branch  2 taken 0 (throw)
+    10000:  239-block  0
+branch  3 taken 737 (fallthrough)
+branch  4 taken 9263
+      737:  240:			count--;
+      737:  240-block  0
+        -:  241:		}
+   10000*:  242:		assert(sb.size() == count);
+    10000:  242-block  0
+call    0 returned 10000
+branch  1 taken 10000 (fallthrough)
+branch  2 taken 0 (throw)
+    10000:  242-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 10000
+    %%%%%:  242-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+    10000:  242-block  3
+    %%%%%:  242-block  4
+        -:  243:	}
+       2*:  244:	assert(sb.size() == count);
+        2:  244-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  244-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 2
+    %%%%%:  244-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+        2:  244-block  3
+    %%%%%:  244-block  4
+        2:  245:}
+        2:  245-block  0
+call    0 returned 2
+    $$$$$:  245-block  1
+call    1 never executed
+        -:  246:
+function _Z12testIteratorPFbiiE called 2 returned 100% blocks executed 77%
+        2:  247:void testIterator(Relation rel) {
+        2:  248:	cout << "Test iterator" << endl;
+        2:  248-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  248-block  1
+call    3 returned 2
+branch  4 taken 2 (fallthrough)
+branch  5 taken 0 (throw)
+        2:  249:	SortedBag sb(rel);
+        2:  249-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+     1002:  250:	for (int i = 0; i < 500; i++) {
+        2:  250-block  0
+     1000:  250-block  1
+     1002:  250-block  2
+branch  0 taken 1000
+branch  1 taken 2 (fallthrough)
+     1000:  251:		sb.add(i);
+     1000:  251-block  0
+call    0 returned 1000
+branch  1 taken 1000 (fallthrough)
+branch  2 taken 0 (throw)
+     1000:  252:		sb.add(-2 * i);
+     1000:  252-block  0
+call    0 returned 1000
+branch  1 taken 1000 (fallthrough)
+branch  2 taken 0 (throw)
+     1000:  253:		sb.add(2 * i);
+     1000:  253-block  0
+call    0 returned 1000
+branch  1 taken 1000 (fallthrough)
+branch  2 taken 0 (throw)
+     1000:  254:		sb.add(i);
+     1000:  254-block  0
+call    0 returned 1000
+branch  1 taken 1000 (fallthrough)
+branch  2 taken 0 (throw)
+     1000:  255:		sb.add(-2 * i);
+     1000:  255-block  0
+call    0 returned 1000
+branch  1 taken 1000 (fallthrough)
+branch  2 taken 0 (throw)
+     1000:  256:		sb.add(2 * i);
+     1000:  256-block  0
+call    0 returned 1000
+branch  1 taken 1000 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  257:	}
+        -:  258:
+       2*:  259:	assert(sb.size() == 3000);
+        2:  259-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  259-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 2
+    %%%%%:  259-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+        2:  259-block  3
+    %%%%%:  259-block  4
+        -:  260:
+        2:  261:	SortedBagIterator sbi = sb.iterator();
+        2:  261-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  262:	int count = 0;
+     6002:  263:	while (sbi.valid()) {
+        2:  263-block  0
+     6002:  263-block  1
+call    0 returned 6002
+branch  1 taken 6002 (fallthrough)
+branch  2 taken 0 (throw)
+     6002:  263-block  2
+branch  3 taken 6000
+branch  4 taken 2 (fallthrough)
+     6000:  264:		count++;
+     6000:  265:		sbi.next();
+     6000:  265-block  0
+call    0 returned 6000
+branch  1 taken 6000 (fallthrough)
+branch  2 taken 0 (throw)
+        -:  266:	}
+       2*:  267:	assert(count == sb.size());
+        2:  267-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  267-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 2
+    %%%%%:  267-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+        2:  267-block  3
+    %%%%%:  267-block  4
+        2:  268:	sbi.first();
+        2:  268-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  269:	TElem e = sbi.getCurrent();
+        2:  269-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  270:	sbi.next();
+        2:  270-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  271:	count = 1;
+     6000:  272:	while (sbi.valid()) {
+        2:  272-block  0
+     6000:  272-block  1
+call    0 returned 6000
+branch  1 taken 6000 (fallthrough)
+branch  2 taken 0 (throw)
+     6000:  272-block  2
+branch  3 taken 5998
+branch  4 taken 2 (fallthrough)
+     5998:  273:		TElem ee = sbi.getCurrent();
+     5998:  273-block  0
+call    0 returned 5998
+branch  1 taken 5998 (fallthrough)
+branch  2 taken 0 (throw)
+    5998*:  274:		assert(rel(e, ee));
+     5998:  274-block  0
+call    0 returned 5998
+branch  1 taken 5998 (fallthrough)
+branch  2 taken 0 (throw)
+     5998:  274-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 5998
+    %%%%%:  274-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+     5998:  274-block  3
+    %%%%%:  274-block  4
+     5998:  275:		TElem ee2 = sbi.getCurrent();
+     5998:  275-block  0
+call    0 returned 5998
+branch  1 taken 5998 (fallthrough)
+branch  2 taken 0 (throw)
+    5998*:  276:		assert(ee == ee2);
+     5998:  276-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 5998
+    %%%%%:  276-block  1
+call    2 never executed
+branch  3 never executed
+branch  4 never executed
+     5998:  276-block  2
+    %%%%%:  276-block  3
+     5998:  277:		TElem ee3 = sbi.getCurrent();
+     5998:  277-block  0
+call    0 returned 5998
+branch  1 taken 5998 (fallthrough)
+branch  2 taken 0 (throw)
+    5998*:  278:		assert(ee == ee3);
+     5998:  278-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 5998
+    %%%%%:  278-block  1
+call    2 never executed
+branch  3 never executed
+branch  4 never executed
+     5998:  278-block  2
+    %%%%%:  278-block  3
+     5998:  279:		e = ee;
+     5998:  280:		sbi.next();
+     5998:  280-block  0
+call    0 returned 5998
+branch  1 taken 5998 (fallthrough)
+branch  2 taken 0 (throw)
+     5998:  281:		count++;
+     5998:  281-block  0
+        -:  282:	}
+       2*:  283:	assert(count == sb.size());
+        2:  283-block  0
+call    0 returned 2
+branch  1 taken 2 (fallthrough)
+branch  2 taken 0 (throw)
+        2:  283-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 2
+    %%%%%:  283-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+        2:  283-block  3
+    %%%%%:  283-block  4
+        2:  284:}
+        2:  284-block  0
+call    0 returned 2
+    $$$$$:  284-block  1
+call    1 never executed
+        -:  285:
+        -:  286:
+        -:  287:
+function _Z15testAllExtendedv called 1 returned 100% blocks executed 100%
+        1:  288:void testAllExtended() {
+        1:  289:	testCreate();
+        1:  289-block  0
+call    0 returned 1
+        1:  290:	testAdd(relation2);
+call    0 returned 1
+        1:  291:	testAdd(relation3);
+call    0 returned 1
+        1:  292:	testRemove(relation2);
+call    0 returned 1
+        1:  293:	testRemove(relation3);
+call    0 returned 1
+        1:  294:	testIterator(relation2);
+call    0 returned 1
+        1:  295:	testIterator(relation3);
+call    0 returned 1
+        1:  296:	testQuantity(relation2);
+call    0 returned 1
+        1:  297:	testQuantity(relation3);
+call    0 returned 1
+        1:  298:}

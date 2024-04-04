@@ -1,0 +1,333 @@
+        -:    0:Source:C:/Users/remeti1/Desktop/Faculta/Data_structures/Lab_2/SortedBag.cpp
+        -:    0:Graph:C:\Users\remeti1\Desktop\Faculta\Data_structures\Lab_2\cmake-build-debug-coverage\CMakeFiles\Lab_2.dir\SortedBag.cpp.gcno
+        -:    0:Data:C:\Users\remeti1\Desktop\Faculta\Data_structures\Lab_2\cmake-build-debug-coverage\CMakeFiles\Lab_2.dir\SortedBag.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "SortedBag.h"
+        -:    2:#include "SortedBagIterator.h"
+        -:    3:
+        -:    4:
+function _ZN9SortedBagC2EPFbiiE called 15 returned 100% blocks executed 100%
+       15:    5:SortedBag::SortedBag(Relation r) {
+       15:    6:    this->r = r;
+       15:    7:    this->head = nullptr;
+       15:    8:    this->nr_elems = 0;
+        -:    9:    //Theta(1) complexity
+       15:   10:}
+        -:   11:
+function _ZN9SortedBag3addEi called 26521 returned 100% blocks executed 100%
+    26521:   12:void SortedBag::add(TComp e) {
+    26521:   13:    this->nr_elems++;
+    26521:   14:    if (this->head == nullptr) {
+    26521:   14-block  0
+branch  0 taken 14 (fallthrough)
+branch  1 taken 26507
+       14:   15:        this->head = new Node(e, 1);
+       14:   15-block  0
+call    0 returned 14
+call    1 returned 14
+       14:   16:        return;
+        -:   17:    }
+    26507:   18:    if (search(e)) {
+    26507:   18-block  0
+call    0 returned 26507
+branch  1 taken 17862 (fallthrough)
+branch  2 taken 8645
+    17862:   19:        Node *curr = head;
+  5317593:   20:        while (curr->element != e)
+    17862:   20-block  0
+  5317593:   20-block  1
+branch  0 taken 5299731
+branch  1 taken 17862 (fallthrough)
+  5299731:   21:            curr = curr->next;
+  5299731:   21-block  0
+    17862:   22:        curr->frequency++;
+    17862:   23:        return;
+    17862:   23-block  0
+        -:   24:    }
+     8645:   25:    Node *curr = head;
+  2133233:   26:    while (curr != nullptr && !this->r(e, curr->element))
+     8645:   26-block  0
+  2133233:   26-block  1
+branch  0 taken 2130430 (fallthrough)
+branch  1 taken 2803
+  2130430:   26-block  2
+call    2 returned 2130430
+branch  3 taken 2124588 (fallthrough)
+branch  4 taken 5842
+  2124588:   26-block  3
+     8645:   26-block  4
+  2133233:   26-block  5
+branch  5 taken 2124588
+branch  6 taken 8645 (fallthrough)
+  2124588:   27:        curr = curr->next;
+  2124588:   27-block  0
+     8645:   28:    Node *new_node = new Node(e, 1);
+     8645:   28-block  0
+call    0 returned 8645
+call    1 returned 8645
+     8645:   29:    if (curr != nullptr) {
+branch  0 taken 5842 (fallthrough)
+branch  1 taken 2803
+     5842:   30:        new_node->prev = curr->prev;
+     5842:   31:        new_node->next = curr;
+     5842:   32:        curr->prev = new_node;
+     5842:   33:        if (head == curr)
+     5842:   33-block  0
+branch  0 taken 2801 (fallthrough)
+branch  1 taken 3041
+     2801:   34:            head = new_node;
+     2801:   34-block  0
+        -:   35:        else {
+     3041:   36:            new_node->prev->next = new_node;
+     3041:   36-block  0
+        -:   37:        }
+        -:   38:    } else {
+     2803:   39:        Node *tail = head;
+  1404565:   40:        while (tail->next != nullptr) {
+     2803:   40-block  0
+  1404565:   40-block  1
+branch  0 taken 1401762
+branch  1 taken 2803 (fallthrough)
+  1401762:   41:            tail = tail->next;
+  1401762:   41-block  0
+        -:   42:        }
+     2803:   43:        new_node->prev = tail;
+     2803:   44:        tail->next = new_node;
+     2803:   44-block  0
+        -:   45:    }
+        -:   46:    //Best case happens when the element that we want to add
+        -:   47:    //already exists in the DLL and is on the first position
+        -:   48:    //so we just have to increase its frequency
+        -:   49:    //complexity Theta(1)
+        -:   50:    //worst case happens when the element does not exist inside the DLL
+        -:   51:    //and by the relation it should be put at the tail of the DLL
+        -:   52:    //in this case the complexity is O(n)
+        -:   53:
+        -:   54:    ///Overall complexity is O(n)
+        -:   55:
+        -:   56:}
+        -:   57:
+        -:   58:
+function _ZN9SortedBag6removeEi called 53046 returned 100% blocks executed 100%
+    53046:   59:bool SortedBag::remove(TComp e) {
+    53046:   60:    if (this->head == nullptr) {
+    53046:   60-block  0
+branch  0 taken 642 (fallthrough)
+branch  1 taken 52404
+      642:   61:        return false;
+      642:   61-block  0
+        -:   62:    }
+    52404:   63:    if (!search(e))
+    52404:   63-block  0
+call    0 returned 52404
+branch  1 taken 49261 (fallthrough)
+branch  2 taken 3143
+    49261:   64:        return false;
+    49261:   64-block  0
+     3143:   65:    this->nr_elems--;
+     3143:   66:    Node *curr = head;
+   830629:   67:    while (curr->next != nullptr && curr->element != e)
+     3143:   67-block  0
+   830629:   67-block  1
+branch  0 taken 829922 (fallthrough)
+branch  1 taken 707
+   829922:   67-block  2
+branch  2 taken 827486
+branch  3 taken 2436 (fallthrough)
+   827486:   68:        curr = curr->next;
+   827486:   68-block  0
+     3143:   69:    if (curr->frequency > 1) {
+     3143:   69-block  0
+branch  0 taken 2141 (fallthrough)
+branch  1 taken 1002
+     2141:   70:        curr->frequency--;
+     2141:   71:        return true;
+     2141:   71-block  0
+        -:   72:    } else {
+     1002:   73:        if (curr->prev != nullptr) {
+     1002:   73-block  0
+branch  0 taken 800 (fallthrough)
+branch  1 taken 202
+      800:   74:            curr->prev->next = curr->next;
+      800:   74-block  0
+        -:   75:        } else {
+      202:   76:            this->head = curr->next;
+      202:   76-block  0
+        -:   77:        }
+     1002:   78:        if (curr->next != nullptr)
+     1002:   78-block  0
+branch  0 taken 800 (fallthrough)
+branch  1 taken 202
+      800:   79:            curr->next->prev = curr->prev;
+      800:   79-block  0
+     1002:   80:        delete curr;
+     1002:   80-block  0
+branch  0 taken 1002 (fallthrough)
+branch  1 taken 0
+     1002:   80-block  1
+call    2 returned 1002
+     1002:   81:        return true;
+     1002:   81-block  0
+        -:   82:    }
+        -:   83:    //Best case happens when the element is in the head of the DLL
+        -:   84:    //and has more than 1 frequency
+        -:   85:    //complexity Theta(1)
+        -:   86:    //Worst case happens when the element is the last in the DLL
+        -:   87:    //complexity O(n)
+        -:   88:
+        -:   89:    ///Overall complexity O(n)
+        -:   90:}
+        -:   91:
+        -:   92:
+function _ZNK9SortedBag6searchEi called 98579 returned 100% blocks executed 100%
+    98579:   93:bool SortedBag::search(TComp elem) const {
+    98579:   94:    if (this->head != nullptr) {
+    98579:   94-block  0
+branch  0 taken 97299 (fallthrough)
+branch  1 taken 1280
+    97299:   95:        Node *curr = head;
+ 71340095:   96:        while (curr->next != nullptr) {
+    97299:   96-block  0
+ 71340095:   96-block  1
+branch  0 taken 71277620
+branch  1 taken 62475 (fallthrough)
+ 71277620:   97:            if (curr->element == elem)
+ 71277620:   97-block  0
+branch  0 taken 34824 (fallthrough)
+branch  1 taken 71242796
+    34824:   98:                return true;
+    34824:   98-block  0
+ 71242796:   99:            curr = curr->next;
+ 71242796:   99-block  0
+        -:  100:        }
+    62475:  101:        if (curr->element == elem)
+    62475:  101-block  0
+branch  0 taken 2173 (fallthrough)
+branch  1 taken 60302
+     2173:  102:            return true;
+     2173:  102-block  0
+        -:  103:    }
+    61582:  104:    return false;
+    61582:  104-block  0
+        -:  105:    //Best case happens when the element is located in the head of the DLL
+        -:  106:    //in this case the complexity is Theta(1)
+        -:  107:    //Worst case happens when the element is not located in the DLL
+        -:  108:    //in this case the complexity is O(n),where n is the number of nodes
+        -:  109:
+        -:  110:    ///So the overall complexity is O(n)
+        -:  111:}
+        -:  112:
+        -:  113:
+function _ZNK9SortedBag13nrOccurrencesEi called 9835 returned 100% blocks executed 100%
+     9835:  114:int SortedBag::nrOccurrences(TComp elem) const {
+     9835:  115:    if (!search(elem))
+     9835:  115-block  0
+call    0 returned 9835
+branch  1 taken 1838 (fallthrough)
+branch  2 taken 7997
+     1838:  116:        return 0;
+     1838:  116-block  0
+        -:  117:    else {
+     7997:  118:        Node *curr = head;
+  1438204:  119:        while (curr->element != elem)
+     7997:  119-block  0
+  1438204:  119-block  1
+branch  0 taken 1430207
+branch  1 taken 7997 (fallthrough)
+  1430207:  120:            curr = curr->next;
+  1430207:  120-block  0
+     7997:  121:        return curr->frequency;
+     7997:  121-block  0
+        -:  122:    }
+        -:  123:    //Best case happens when the element is not  located in the DLL
+        -:  124:    //in this case the complexity is Theta(1)
+        -:  125:    //Worst case happens when the element is located in the tail of the DLL
+        -:  126:    //in this case the complexity is O(n),where n is the number of nodes
+        -:  127:
+        -:  128:    ///So the overall complexity is O(n)
+        -:  129:}
+        -:  130:
+        -:  131:
+function _ZNK9SortedBag4sizeEv called 10036 returned 100% blocks executed 100%
+    10036:  132:int SortedBag::size() const {
+    10036:  133:    return this->nr_elems;
+    10036:  133-block  0
+        -:  134:    //Theta(1) complexity
+        -:  135:}
+        -:  136:
+        -:  137:
+function _ZNK9SortedBag7isEmptyEv called 7 returned 100% blocks executed 100%
+        7:  138:bool SortedBag::isEmpty() const {
+        7:  139:    if (this->head == nullptr)
+        7:  139-block  0
+branch  0 taken 4 (fallthrough)
+branch  1 taken 3
+        4:  140:        return true;
+        4:  140-block  0
+        3:  141:    return false;
+        3:  141-block  0
+        -:  142:    //Theta(1) complexity
+        -:  143:}
+        -:  144:
+function _ZN9SortedBag9removeAllEv called 2 returned 100% blocks executed 92%
+        2:  145:int SortedBag::removeAll() {
+        2:  146:    int removed_elem = 0;
+        2:  147:    if (this->head != nullptr) {
+        2:  147-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 0
+        2:  148:        Node *curr = head;
+        9:  149:        while (curr != nullptr) {
+        2:  149-block  0
+        9:  149-block  1
+branch  0 taken 7
+branch  1 taken 2 (fallthrough)
+        7:  150:            if (curr->frequency > 1) {
+        7:  150-block  0
+branch  0 taken 2 (fallthrough)
+branch  1 taken 5
+        5:  151:                while (curr->frequency > 1) {
+        2:  151-block  0
+        5:  151-block  1
+branch  0 taken 3
+branch  1 taken 2 (fallthrough)
+        3:  152:                    remove(curr->element);
+        3:  152-block  0
+call    0 returned 3
+        -:  153:                }
+        2:  154:                remove(curr->element);
+        2:  154-block  0
+call    0 returned 2
+        2:  155:                removed_elem++;
+        -:  156:            }
+        7:  157:            curr = curr->next;
+        7:  157-block  0
+        -:  158:        }
+        2:  159:        return removed_elem;
+        2:  159-block  0
+        -:  160:    } else
+    #####:  161:        return 0;
+    %%%%%:  161-block  0
+        -:  162:    //The best case happens when the frequency of all elements in the
+        -:  163:    //DLL is 1
+        -:  164:    //complexity O(n)
+        -:  165:    //The worst case happens when all of the elements in the
+        -:  166:    //DLL have more than 1 complexity
+        -:  167:    //complexity O(n^2)
+        -:  168:
+        -:  169:    ///Overall complexity O(n^2)
+        -:  170:}
+        -:  171:
+        -:  172:
+function _ZNK9SortedBag8iteratorEv called 12 returned 100% blocks executed 100%
+       12:  173:SortedBagIterator SortedBag::iterator() const {
+       12:  174:    return SortedBagIterator(*this);
+       12:  174-block  0
+call    0 returned 12
+        -:  175:    //Theta(1) complexity
+        -:  176:}
+        -:  177:
+        -:  178:
+function _ZN9SortedBagD2Ev called 15 returned 100% blocks executed 100%
+       15:  179:SortedBag::~SortedBag() = default;
+        -:  180://Theta(1) complexity

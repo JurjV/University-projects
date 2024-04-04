@@ -1,0 +1,7 @@
+(defun postorder-traversal (tree)
+  (if (null tree)
+      '()
+      (append (postorder-traversal (second tree))
+              (postorder-traversal (third tree))
+              (list (first tree)))))
+(print (postorder-traversal '(A (B (D) (E)) (C (F) (G)))))

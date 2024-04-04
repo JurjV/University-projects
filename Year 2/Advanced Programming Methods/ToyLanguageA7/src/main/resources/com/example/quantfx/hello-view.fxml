@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_CENTER" prefHeight="700.0" prefWidth="900.0" spacing="20.0" style="-fx-background-color: #55BB77;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.quantfx.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+         <children>
+            <Button fx:id="loadExampleButton" mnemonicParsing="false" onAction="#onLoadExampleButtonClick" text="Load Example" />
+            <Button id="runOneStepButton" fx:id="runOneStepButton" mnemonicParsing="false" onAction="#onRunOneStepButtonClick" text="Run One Step" />
+         </children>
+      </HBox>
+      <ListView fx:id="programsListView" prefHeight="200.0" prefWidth="200.0" />
+      <TextField fx:id="programStatesCountTextField" />
+      <HBox prefHeight="200.0" prefWidth="200.0" spacing="40.0">
+         <children>
+            <TableView fx:id="heapTableView" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+            </TableView>
+            <ListView fx:id="fileTableListView" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" />
+            <ListView fx:id="outputListView" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </HBox>
+      <HBox prefHeight="200.0" prefWidth="200.0" spacing="40.0">
+         <children>
+            <TableView fx:id="symbolTableView" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+            </TableView>
+            <ListView fx:id="programStatesListView" onMouseClicked="#onProgramSelected" prefHeight="200.0" prefWidth="200.0" />
+            <ListView fx:id="executionStackListView" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

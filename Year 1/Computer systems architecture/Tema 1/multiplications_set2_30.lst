@@ -1,0 +1,39 @@
+     1                                  bits 32
+     2                                  global  start 
+     3                                  
+     4                                  extern  exit
+     5                                  import  exit  msvcrt.dll
+     6                                          
+     7                                  segment  data use32 class=data 
+     8 00000000 11                          a db 17
+     9 00000001 0F                          b db 15
+    10 00000002 07                          c db 7
+    11 00000003 0C                          d db 12
+    12 00000004 8404                        e dw 1156
+    13 00000006 1500                        f dw 21
+    14 00000008 0500                        g dw 5
+    15 0000000A 0800                        h dw 8
+    16                                      
+    17                                  segment  code use32 class=code 
+    18                                  start: 
+    19                                  	;100/(e+h-3*a)
+    20 00000000 B800000000                  mov eax,0
+    21 00000005 BA00000000              	mov edx,0
+    22 0000000A 66A1[04000000]              mov ax,[e]
+    23 00000010 660305[0A000000]            add ax,[h]
+    24 00000017 6689C3                      mov bx,ax
+    25 0000001A B800000000                  mov eax,0
+    26 0000001F B003                        mov al,3
+    27 00000021 8A25[00000000]              mov ah,[a]
+    28 00000027 F6E4                        mul ah
+    29 00000029 6629C3                      sub bx,ax
+    30 0000002C B800000000                  mov eax,0
+    31 00000031 66B86400                    mov ax,100
+    32 00000035 66F7F3                      div word bx
+    33                                      
+    34                                      
+    35                                      
+    36                                  	
+    37 00000038 6A00                    	push   dword 0 
+    38 0000003A FF15[00000000]          	call   [exit] 
+    39                                      

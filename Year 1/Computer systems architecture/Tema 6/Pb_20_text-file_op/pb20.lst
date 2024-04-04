@@ -1,0 +1,99 @@
+     1                                  ;A file name and a text (defined in the data segment) are given. The text contains lowercase letters and spaces. Replace all the letters on even positions with their position. Create a file with the given name and w
+     2                                  
+     3                                  bits 32 ; assembling for the 32 bits architecture
+     4                                  
+     5                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     6                                  global start        
+     7                                  
+     8                                  ; declare external functions needed by our program
+     9                                  extern exit,fopen,fclose,fprintf               ; tell nasm that exit exists even if we won't be defining it
+    10                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    11                                  import fopen msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    12                                  import fclose msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    13                                  import fprintf msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    14                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    15                                  
+    16                                  ; our data is declared here (the variables needed by our program)
+    17                                  segment data use32 class=data
+    18                                  
+    19 00000000 66696C652E74787400          file_name db "file.txt",0
+    20 00000009 616263206364206420-         text db "abc cd d a aaafaafasgag agsdgasg  a",0
+    20 00000012 612061616166616166-
+    20 0000001B 617367616720616773-
+    20 00000024 646761736720206100 
+    21                                      len equ $-text
+    22 0000002D 7700                        write_mode db "w",0
+    23 0000002F 256300                      write_format_char db "%c",0
+    24 00000032 256400                      write_format_int db "%d",0
+    25 00000035 FFFFFFFF                    file_descriptor dd -1
+    26 00000039 00000000                    char dd 0
+    27 0000003D 00000000                    counter dd 0
+    28                                      
+    29                                  
+    30                                  ; our code starts here
+    31                                  segment code use32 class=code
+    32                                      start:
+    33 00000000 68[2D000000]                    push dword write_mode
+    34 00000005 68[00000000]                    push dword file_name
+    35 0000000A FF15[00000000]                  call [fopen]
+    36 00000010 83C408                          add esp,4*2
+    37                                          
+    38 00000013 83F800                          cmp eax,0
+    39 00000016 0F8495000000                    je Incorrect
+    40 0000001C A3[35000000]                    mov [file_descriptor],eax
+    41                                          
+    42 00000021 B924000000                      mov ecx,len
+    43 00000026 BE[09000000]                    mov esi,text
+    44 0000002B FC                              cld
+    45                                          repeta:
+    46 0000002C 51                              push ecx
+    47 0000002D AC                                  lodsb
+    48 0000002E 6698                                cbw
+    49 00000030 98                                  cwde
+    50 00000031 A3[39000000]                        mov [char],eax
+    51 00000036 FF35[39000000]                      push dword [char]
+    52 0000003C 68[2F000000]                        push dword write_format_char
+    53 00000041 FF35[35000000]                      push dword [file_descriptor]
+    54 00000047 FF15[00000000]                      call [fprintf]
+    55 0000004D 83C40C                              add esp,4*3
+    56                                              
+    57 00000050 AC                                  lodsb
+    58 00000051 3C00                                cmp al,0
+    59 00000053 744D                                je Gata
+    60 00000055 8305[3D000000]02                    add dword [counter],2
+    61 0000005C 3C20                                cmp al," "
+    62 0000005E 741C                                je Mai_departe
+    63                                              
+    64 00000060 FF35[3D000000]                      push dword [counter]
+    65 00000066 68[32000000]                        push dword write_format_int
+    66 0000006B FF35[35000000]                      push dword [file_descriptor]
+    67 00000071 FF15[00000000]                      call [fprintf]
+    68 00000077 83C40C                              add esp,4*3
+    69 0000007A EB22                                jmp Next
+    70                                              
+    71                                              Mai_departe:
+    72 0000007C 6698                                cbw
+    73 0000007E 98                                  cwde
+    74 0000007F A3[39000000]                        mov [char],eax
+    75 00000084 FF35[39000000]                      push dword [char]
+    76 0000008A 68[2F000000]                        push dword write_format_char
+    77 0000008F FF35[35000000]                      push dword [file_descriptor]
+    78 00000095 FF15[00000000]                      call [fprintf]
+    79 0000009B 83C40C                              add esp,4*3
+    80                                              
+    81                                              Next:
+    82 0000009E 59                                  pop ecx
+    83 0000009F 49                                  dec ecx
+    84 000000A0 E28A                                loop repeta
+    85                                          Gata:
+    86                                                      
+    87 000000A2 FF35[35000000]                  push dword [file_descriptor]
+    88 000000A8 FF15[00000000]                  call [fclose]    ; closing the file
+    89 000000AE 83C404                          add esp, 4
+    90                                          
+    91                                          Incorrect:
+    92                                          
+    93                                      
+    94                                          ; exit(0)
+    95 000000B1 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    96 000000B3 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

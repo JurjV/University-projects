@@ -1,0 +1,62 @@
+     1                                  ;Two natural numbers a and b (a, b: dword, defined in the data segment) are given. Calculate their sum and display the result in the following format: "<a> + <b> = <result>". Example: "1 + 2 = 3"
+     2                                  ;The values will be displayed in decimal format (base 10) with sign.
+     3                                  bits 32 ; assembling for the 32 bits architecture
+     4                                  
+     5                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     6                                  global start        
+     7                                  
+     8                                  ; declare external functions needed by our program
+     9                                  extern exit,scanf,printf         ; tell nasm that exit exists even if we won't be defining it
+    10                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    11                                  import printf msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    12                                  import scanf msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    13                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    14                                  
+    15                                  ; our data is declared here (the variables needed by our program)
+    16                                  segment data use32 class=data
+    17 00000000 00000000                    a dd 0
+    18 00000004 00000000                    b dd 0
+    19 00000008 00000000                    result dd 0
+    20 0000000C 613D000000000000            read_text_a dd "a=",0
+    21 00000014 623D000000000000            read_text_b dd "b=",0
+    22 0000001C 2564000000000000            read_format dd "%d",0
+    23 00000024 2564202B202564203D-         result_format dd "%d + %d = %d",0
+    23 0000002D 20256400000000     
+    24                                      
+    25                                  
+    26                                  ; our code starts here
+    27                                  segment code use32 class=code
+    28                                      start:
+    29 00000000 68[0C000000]                    push dword read_text_a
+    30 00000005 FF15[00000000]                  call [printf]
+    31 0000000B 83C404                          add esp,4
+    32                                          
+    33 0000000E 68[00000000]                    push dword a
+    34 00000013 68[1C000000]                    push dword read_format
+    35 00000018 FF15[00000000]                  call [scanf]
+    36 0000001E 83C408                          add esp,4*2
+    37                                          
+    38 00000021 68[0C000000]                    push dword read_text_a
+    39 00000026 FF15[00000000]                  call [printf]
+    40 0000002C 83C404                          add esp,4
+    41                                          
+    42 0000002F 68[04000000]                    push dword b
+    43 00000034 68[1C000000]                    push dword read_format
+    44 00000039 FF15[00000000]                  call [scanf]
+    45 0000003F 83C408                          add esp,4*2
+    46                                          
+    47 00000042 A1[00000000]                    mov eax,[a]
+    48 00000047 0305[04000000]                  add eax,[b]
+    49 0000004D A3[08000000]                    mov [result],eax
+    50                                          
+    51 00000052 FF35[08000000]                  push dword [result]
+    52 00000058 FF35[04000000]                  push dword [b]
+    53 0000005E FF35[00000000]                  push dword [a]
+    54 00000064 68[24000000]                    push dword result_format
+    55 00000069 FF15[00000000]                  call [printf]
+    56 0000006F 83C410                          add esp,4*4
+    57                                          
+    58                                      
+    59                                          ; exit(0)
+    60 00000072 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    61 00000074 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

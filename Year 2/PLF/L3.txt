@@ -1,0 +1,8 @@
+(defun replace-node (tree old-node new-node)
+  (if (null tree)
+      '()
+      (if (equal (first tree) old-node)
+          (cons new-node (mapcar #'(lambda (subtree) (replace-node subtree old-node new-node)) (rest tree)))
+          (cons (first tree) (mapcar #'(lambda (subtree) (replace-node subtree old-node new-node)) (rest tree))))))
+
+(print (replace-node '(A (B (C)) (D) (E (F))) 'B 'X))

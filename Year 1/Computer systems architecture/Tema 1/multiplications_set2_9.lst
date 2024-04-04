@@ -1,0 +1,36 @@
+     1                                  bits 32
+     2                                  global  start 
+     3                                  
+     4                                  extern  exit
+     5                                  import  exit  msvcrt.dll
+     6                                          
+     7                                  segment  data use32 class=data 
+     8 00000000 11                          a db 17
+     9 00000001 0F                          b db 15
+    10 00000002 07                          c db 7
+    11 00000003 0C                          d db 12
+    12 00000004 8404                        e dw 1156
+    13 00000006 1500                        f dw 21
+    14 00000008 0500                        g dw 5
+    15 0000000A 0800                        h dw 8
+    16                                      
+    17                                  segment  code use32 class=code 
+    18                                  start: 
+    19                                  	;(2*d+e)/a
+    20 00000000 B800000000                  mov eax,0
+    21 00000005 BA00000000              	mov edx,0
+    22 0000000A A0[03000000]                mov al,[d]
+    23 0000000F B402                        mov ah,2
+    24 00000011 F6E4                        mul ah
+    25 00000013 660305[04000000]            add ax,[e]
+    26 0000001A 668B1D[00000000]            mov bx,[a]
+    27 00000021 B700                        mov bh,0
+    28 00000023 66F7F3                      div byte bx
+    28          ******************       warning: register size specification ignored
+    29                                      
+    30                                      
+    31                                      
+    32                                  	
+    33 00000026 6A00                    	push   dword 0 
+    34 00000028 FF15[00000000]          	call   [exit] 
+    35                                      

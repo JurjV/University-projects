@@ -1,0 +1,8 @@
+# ninja log v5
+17	420	7030273820691847	CMakeFiles/Lab_2.dir/SortedBag.cpp.obj	2dfd69146cabcda8
+27	448	7030273820879049	CMakeFiles/Lab_2.dir/ShortTest.cpp.obj	f70775956da0194f
+47	470	7030273821406360	CMakeFiles/Lab_2.dir/RemoveAllTest.cpp.obj	241e2d82860c79dd
+37	475	7030273821376344	CMakeFiles/Lab_2.dir/SortedBagIterator.cpp.obj	393a88b8d01d58a7
+0	693	7030273823716383	CMakeFiles/Lab_2.dir/App.cpp.obj	4016b94f54557014
+10	783	7030273824641485	CMakeFiles/Lab_2.dir/ExtendedTest.cpp.obj	3a5cfa73e9375fc3
+784	918	7030273825926580	Lab_2.exe	b1885edc4daebf02

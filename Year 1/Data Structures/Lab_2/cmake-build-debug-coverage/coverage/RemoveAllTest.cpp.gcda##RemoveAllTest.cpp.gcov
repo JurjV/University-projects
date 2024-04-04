@@ -1,0 +1,154 @@
+        -:    0:Source:C:/Users/remeti1/Desktop/Faculta/Data_structures/Lab_2/RemoveAllTest.cpp
+        -:    0:Graph:C:\Users\remeti1\Desktop\Faculta\Data_structures\Lab_2\cmake-build-debug-coverage\CMakeFiles\Lab_2.dir\RemoveAllTest.cpp.gcno
+        -:    0:Data:C:\Users\remeti1\Desktop\Faculta\Data_structures\Lab_2\cmake-build-debug-coverage\CMakeFiles\Lab_2.dir\RemoveAllTest.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "RemoveAllTest.h"
+        -:    2:#include "SortedBag.h"
+        -:    3:#include "SortedBagIterator.h"
+        -:    4:#include <cassert>
+        -:    5:#include <cstdio>
+        -:    6:
+function _Z9relation4ii called 5 returned 100% blocks executed 100%
+        5:    7:bool relation4(TComp r1, TComp r2) {
+        5:    8:    return r1 <= r2;
+        5:    8-block  0
+        -:    9:}
+        -:   10:
+function _Z13TestRemoveAllv called 1 returned 100% blocks executed 68%
+        1:   11:void TestRemoveAll(){
+        1:   12:    printf("Test Remove All\n");
+        1:   12-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   13:    SortedBag sb(relation4);
+        1:   13-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   14:    assert(sb.isEmpty() == true);
+        1:   14-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   14-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   14-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+        1:   14-block  3
+    %%%%%:   14-block  4
+       1*:   15:    assert(sb.size() == 0);
+        1:   15-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   15-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   15-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+        1:   15-block  3
+    %%%%%:   15-block  4
+        1:   16:    sb.add(3);
+        1:   16-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   17:    sb.add(3);
+        1:   17-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   18:    sb.add(3);
+        1:   18-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   19:    sb.add(5);
+        1:   19-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   20:    sb.add(0);
+        1:   20-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   21:    sb.add(10);
+        1:   21-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   22:    int num=sb.removeAll();
+        1:   22-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   23:    assert(num==1);
+        1:   23-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   23-block  1
+call    2 never executed
+branch  3 never executed
+branch  4 never executed
+        1:   23-block  2
+    %%%%%:   23-block  3
+       1*:   24:    assert(sb.size()==3);
+        1:   24-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   24-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   24-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+        1:   24-block  3
+    %%%%%:   24-block  4
+        1:   25:    sb.add(5);
+        1:   25-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   26:    num=sb.removeAll();
+        1:   26-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+       1*:   27:    assert(num==1);
+        1:   27-block  0
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   27-block  1
+call    2 never executed
+branch  3 never executed
+branch  4 never executed
+        1:   27-block  2
+    %%%%%:   27-block  3
+       1*:   28:    assert(sb.size()==2);
+        1:   28-block  0
+call    0 returned 1
+branch  1 taken 1 (fallthrough)
+branch  2 taken 0 (throw)
+        1:   28-block  1
+branch  3 taken 0 (fallthrough)
+branch  4 taken 1
+    %%%%%:   28-block  2
+call    5 never executed
+branch  6 never executed
+branch  7 never executed
+        1:   28-block  3
+    %%%%%:   28-block  4
+        1:   29:}
+        1:   29-block  0
+call    0 returned 1
+    $$$$$:   29-block  1
+call    1 never executed

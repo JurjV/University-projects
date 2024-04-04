@@ -1,0 +1,83 @@
+        -:    0:Source:C:/Users/remeti1/Desktop/Faculta/Data_structures/Lab_2/SortedBagIterator.cpp
+        -:    0:Graph:C:\Users\remeti1\Desktop\Faculta\Data_structures\Lab_2\cmake-build-debug-coverage\CMakeFiles\Lab_2.dir\SortedBagIterator.cpp.gcno
+        -:    0:Data:C:\Users\remeti1\Desktop\Faculta\Data_structures\Lab_2\cmake-build-debug-coverage\CMakeFiles\Lab_2.dir\SortedBagIterator.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#include "SortedBagIterator.h"
+        -:    2:#include "SortedBag.h"
+        -:    3:#include <exception>
+        -:    4:
+        -:    5:using namespace std;
+        -:    6:
+function _ZN17SortedBagIteratorC2ERK9SortedBag called 12 returned 100% blocks executed 100%
+       12:    7:SortedBagIterator::SortedBagIterator(const SortedBag &b) : bag(b) {
+       12:    8:    this->current = b.head;
+       12:    9:    this->count=1;
+        -:   10:    //Theta(1) complexity
+       12:   11:}
+        -:   12:
+function _ZN17SortedBagIterator10getCurrentEv called 21314 returned 100% blocks executed 100%
+    21314:   13:TComp SortedBagIterator::getCurrent() {
+    21314:   14:    if (valid())
+    21314:   14-block  0
+call    0 returned 21314
+branch  1 taken 21305 (fallthrough)
+branch  2 taken 9
+    21305:   15:        return current->element;
+    21305:   15-block  0
+        -:   16:    else
+        9:   17:        throw exception();
+        9:   17-block  0
+call    0 returned 9
+call    1 returned 9
+call    2 returned 0
+        -:   18:    //Theta(1) complexity
+        -:   19:}
+        -:   20:
+function _ZN17SortedBagIterator5validEv called 58580 returned 100% blocks executed 100%
+    58580:   21:bool SortedBagIterator::valid() {
+    58580:   22:    if (current != nullptr)
+    58580:   22-block  0
+branch  0 taken 58539 (fallthrough)
+branch  1 taken 41
+    58539:   23:        return true;
+    58539:   23-block  0
+        -:   24:    else
+       41:   25:        return false;
+       41:   25-block  0
+        -:   26:    //Theta(1) complexity
+        -:   27:}
+        -:   28:
+function _ZN17SortedBagIterator4nextEv called 18622 returned 100% blocks executed 100%
+    18622:   29:void SortedBagIterator::next() {
+    18622:   30:    if (!valid())
+    18622:   30-block  0
+call    0 returned 18622
+branch  1 taken 9 (fallthrough)
+branch  2 taken 18613
+        9:   31:        throw exception();
+        9:   31-block  0
+call    0 returned 9
+call    1 returned 9
+call    2 returned 0
+        -:   32:    else
+    18613:   33:        if(this->count==current->frequency) {
+    18613:   33-block  0
+branch  0 taken 10105 (fallthrough)
+branch  1 taken 8508
+    10105:   34:            current = current->next;
+    10105:   35:            this->count=1;
+    10105:   35-block  0
+        -:   36:        }
+        -:   37:        else{
+     8508:   38:            this->count++;
+     8508:   38-block  0
+        -:   39:        }
+        -:   40:        //Theta(1) complexity
+    18613:   41:}
+        -:   42:
+function _ZN17SortedBagIterator5firstEv called 19 returned 100% blocks executed 100%
+       19:   43:void SortedBagIterator::first() {
+       19:   44:    this->current = this->bag.head;
+        -:   45:    //Theta(1) complexity
+       19:   46:}
+        -:   47:

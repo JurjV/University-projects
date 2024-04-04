@@ -1,0 +1,67 @@
+     1                                  bits 32 ; Being given a string of doublewords, build another string of doublewords which will include only the doublewords from the given string which have an even number of bits with the value 1.
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13 00000000 715634124D312C1A76-         s dd 12345671h, 1A2C314Dh, 98FCD1D76h, 1278312Bh
+    13          ******************       warning: dword data exceeds bounds [-w+number-overflow]
+    13 00000009 1DCD8F2B317812     
+    14                                      len equ ($-s)/4 ; the length of the string,in doublewords
+    15 00000010 00000000<rept>              rez times len dd 0
+    16 00000020 10                          isolate db 16
+    17 00000021 02                          two db 2
+    18                                      
+    19                                      
+    20                                  
+    21                                  ; our code starts here
+    22                                  segment code use32 class=code
+    23                                      start:
+    24 00000000 B904000000                      mov ecx,len
+    25 00000005 BE[00000000]                    mov esi,s ; in eds:esi we will store the FAR address of the string "s"
+    26                                          
+    27 0000000A B600                            mov dh,0 ; counts how many have even 1 bits
+    28 0000000C FC                              cld
+    29                                          repeat1:
+    30 0000000D AD                                  lodsd ; parse from left to right
+    31 0000000E 50                                  push eax
+    32 0000000F 89C3                                mov ebx,eax
+    33 00000011 B800000000                          mov eax,0
+    34 00000016 B200                                mov dl,0 ; counts the 1 bits
+    35                                              repeat2:
+    36 00000018 88D8                                    mov al,bl
+    37 0000001A F635[20000000]                          div byte[isolate] ; we isolate the lower bit
+    38 00000020 88E0                                    mov al,ah
+    39 00000022 B400                                    mov ah,0
+    40                                              
+    41 00000024 3C01                                    cmp al,1
+    42 00000026 7502                                    jne sari
+    43 00000028 FEC2                                        inc dl
+    44                                                  sari:
+    45 0000002A C1EB04                                  shr ebx,4
+    46 0000002D 83FB00                                  cmp ebx,0
+    47 00000030 75E6                                    jne repeat2
+    48 00000032 88D0                                mov al,dl
+    49 00000034 F635[21000000]                      div byte[two]
+    50 0000003A 80FC00                              cmp ah,0
+    51 0000003D 7503                                jne sari2
+    52 0000003F FEC6                                    inc dh
+    53 00000041 50                                      push eax
+    54                                              sari2:
+    55 00000042 58                                  pop eax
+    56 00000043 E2C8                            loop repeat1
+    57 00000045 B900000000                      mov ecx,0
+    58 0000004A 88F1                            mov cl,dh
+    59                                          create:
+    60 0000004C 58                                  pop eax
+    61 0000004D 89048D[0C000000]                    mov [rez+4*(ecx-1)],eax
+    62 00000054 E2F6                                loop create
+    63                                          ; exit(0)
+    64 00000056 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    65 00000058 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

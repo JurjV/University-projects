@@ -1,0 +1,16 @@
+% Predicate to generate all subsets of a list
+subsets(List, Subsets) :-
+    subsets(List, [], Subsets).
+
+% Base case: an empty list has one subset, which is the empty list itself
+subsets([], Acc, [Acc]).
+
+% Recursive case:
+% For each element H in the original list, generate subsets both with and without H
+subsets([H|T], Acc, Subsets) :-
+    % Generate subsets with H
+    subsets(T, [H|Acc], SubsetsWithoutH),
+    % Generate subsets without H
+    subsets(T, Acc, SubsetsWithH),
+    % Combine the subsets with and without H
+    append(SubsetsWithH, SubsetsWithoutH, Subsets).

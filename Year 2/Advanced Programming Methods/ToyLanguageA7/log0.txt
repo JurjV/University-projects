@@ -1,0 +1,702 @@
+Execution Stack:
+(Ref(Int) a;(Ref(Int) b;(Int v;(new(a, 0);
+;(new(b, 0);
+;(writeHeap(a, 1);
+;(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v)))))))))))
+
+Symbol Table:
+
+File Table:
+
+Output:
+
+Execution Stack:
+(Ref(Int) b;(Int v;(new(a, 0);
+;(new(b, 0);
+;(writeHeap(a, 1);
+;(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v))))))))))
+Ref(Int) a
+
+Symbol Table:
+
+File Table:
+
+Output:
+
+Execution Stack:
+(Ref(Int) b;(Int v;(new(a, 0);
+;(new(b, 0);
+;(writeHeap(a, 1);
+;(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v))))))))))
+Ref(Int) a
+
+Symbol Table:
+
+File Table:
+
+Output:
+
+Execution Stack:
+(Ref(Int) b;(Int v;(new(a, 0);
+;(new(b, 0);
+;(writeHeap(a, 1);
+;(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v))))))))))
+
+Symbol Table:
+a -> (0,Int)
+
+File Table:
+
+Output:
+
+Execution Stack:
+(Ref(Int) b;(Int v;(new(a, 0);
+;(new(b, 0);
+;(writeHeap(a, 1);
+;(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v))))))))))
+
+Symbol Table:
+a -> (0,Int)
+
+File Table:
+
+Output:
+
+Execution Stack:
+(Int v;(new(a, 0);
+;(new(b, 0);
+;(writeHeap(a, 1);
+;(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v)))))))))
+Ref(Int) b
+
+Symbol Table:
+a -> (0,Int)
+
+File Table:
+
+Output:
+
+Execution Stack:
+(Int v;(new(a, 0);
+;(new(b, 0);
+;(writeHeap(a, 1);
+;(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v)))))))))
+Ref(Int) b
+
+Symbol Table:
+a -> (0,Int)
+
+File Table:
+
+Output:
+
+Execution Stack:
+(Int v;(new(a, 0);
+;(new(b, 0);
+;(writeHeap(a, 1);
+;(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v)))))))))
+
+Symbol Table:
+a -> (0,Int)
+b -> (0,Int)
+
+File Table:
+
+Output:
+
+Execution Stack:
+(Int v;(new(a, 0);
+;(new(b, 0);
+;(writeHeap(a, 1);
+;(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v)))))))))
+
+Symbol Table:
+a -> (0,Int)
+b -> (0,Int)
+
+File Table:
+
+Output:
+
+Execution Stack:
+(new(a, 0);
+;(new(b, 0);
+;(writeHeap(a, 1);
+;(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v))))))))
+Int v
+
+Symbol Table:
+a -> (0,Int)
+b -> (0,Int)
+
+File Table:
+
+Output:
+
+Execution Stack:
+(new(a, 0);
+;(new(b, 0);
+;(writeHeap(a, 1);
+;(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v))))))))
+Int v
+
+Symbol Table:
+a -> (0,Int)
+b -> (0,Int)
+
+File Table:
+
+Output:
+
+Execution Stack:
+(new(a, 0);
+;(new(b, 0);
+;(writeHeap(a, 1);
+;(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v))))))))
+
+Symbol Table:
+a -> (0,Int)
+b -> (0,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(new(a, 0);
+;(new(b, 0);
+;(writeHeap(a, 1);
+;(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v))))))))
+
+Symbol Table:
+a -> (0,Int)
+b -> (0,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(new(b, 0);
+;(writeHeap(a, 1);
+;(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v)))))))
+new(a, 0);
+
+
+Symbol Table:
+a -> (0,Int)
+b -> (0,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(new(b, 0);
+;(writeHeap(a, 1);
+;(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v)))))))
+new(a, 0);
+
+
+Symbol Table:
+a -> (0,Int)
+b -> (0,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(new(b, 0);
+;(writeHeap(a, 1);
+;(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v)))))))
+
+Symbol Table:
+a -> (1,Int)
+b -> (0,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(new(b, 0);
+;(writeHeap(a, 1);
+;(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v)))))))
+
+Symbol Table:
+a -> (1,Int)
+b -> (0,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(writeHeap(a, 1);
+;(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v))))))
+new(b, 0);
+
+
+Symbol Table:
+a -> (1,Int)
+b -> (0,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(writeHeap(a, 1);
+;(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v))))))
+new(b, 0);
+
+
+Symbol Table:
+a -> (1,Int)
+b -> (0,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(writeHeap(a, 1);
+;(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v))))))
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(writeHeap(a, 1);
+;(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v))))))
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v)))))
+writeHeap(a, 1);
+
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v)))))
+writeHeap(a, 1);
+
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v)))))
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(writeHeap(b, 2);
+;(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v)))))
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v))))
+writeHeap(b, 2);
+
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v))))
+writeHeap(b, 2);
+
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v))))
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200;(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v))))
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v)))
+v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v)))
+v=(readHeap(a) LESS_THAN readHeap(b))? 100: 200
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v)))
+if(readHeap(a) LESS_THAN readHeap(b)) then(v = 100) else(v = 200)
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v)))
+if(readHeap(a) LESS_THAN readHeap(b)) then(v = 100) else(v = 200)
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v)))
+v = 100
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v)))
+v = 100
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 0
+
+File Table:
+
+Output:
+
+Execution Stack:
+(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v)))
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 100
+
+File Table:
+
+Output:
+
+Execution Stack:
+(print(v);(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v)))
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 100
+
+File Table:
+
+Output:
+
+Execution Stack:
+(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v))
+print(v)
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 100
+
+File Table:
+
+Output:
+
+Execution Stack:
+(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v))
+print(v)
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 100
+
+File Table:
+
+Output:
+
+Execution Stack:
+(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v))
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 100
+
+File Table:
+
+Output:
+100
+
+Execution Stack:
+(v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200;print(v))
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 100
+
+File Table:
+
+Output:
+100
+
+Execution Stack:
+print(v)
+v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 100
+
+File Table:
+
+Output:
+100
+
+Execution Stack:
+print(v)
+v=(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a))? 100: 200
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 100
+
+File Table:
+
+Output:
+100
+
+Execution Stack:
+print(v)
+if(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a)) then(v = 100) else(v = 200)
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 100
+
+File Table:
+
+Output:
+100
+
+Execution Stack:
+print(v)
+if(readHeap(b) SUBTRACT 2 GREATER_THAN readHeap(a)) then(v = 100) else(v = 200)
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 100
+
+File Table:
+
+Output:
+100
+
+Execution Stack:
+print(v)
+v = 200
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 100
+
+File Table:
+
+Output:
+100
+
+Execution Stack:
+print(v)
+v = 200
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 100
+
+File Table:
+
+Output:
+100
+
+Execution Stack:
+print(v)
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 200
+
+File Table:
+
+Output:
+100
+
+Execution Stack:
+print(v)
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 200
+
+File Table:
+
+Output:
+100
+
+Execution Stack:
+
+Symbol Table:
+a -> (1,Int)
+b -> (2,Int)
+v -> 200
+
+File Table:
+
+Output:
+100
+200
+

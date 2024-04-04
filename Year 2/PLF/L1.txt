@@ -1,0 +1,48 @@
+a)
+(defun eliminate-nth (n lst)
+  (if (or (null lst) (< n 1))
+      lst
+      (if (= n 1)
+          (cdr lst)
+          (cons (car lst) (eliminate-nth (- n 1) (cdr lst)))
+      )
+  )
+)
+(print (eliminate-nth 3 '(1 2 3 4 5)))
+
+
+b)
+(defun successor (nr_lst)
+  (if (= (car nr_lst) 9)
+      (successor (cdr (setq nr_lst (cons 0 (cdr nr_lst)))))
+      (cons (+ 1 (car nr_lst)) (cdr nr_lst))))
+
+(defun get_successor (nr_lst)
+  (setq nr_lst (reverse nr_lst))
+  (setq nr_lst (successor nr_lst))
+  (setq nr_lst (reverse nr_lst))
+  nr_lst)
+(print (get_successor '(1299)))
+
+
+
+c)
+(defun atoms_set (lst)
+  (if (null lst)
+      '()
+      (union (if (atom (car lst))
+                  (list (car lst))
+                  (atoms_set (car lst)))
+              (atoms_set (cdr lst)))))
+(print (atoms_set '(1 (2 4) 5)))
+
+
+
+d)
+(defun is-set-p (lst)
+  (if (null lst)
+      t 
+      (if (member (car lst) (cdr lst))
+          nil
+          (is-set-p (cdr lst)))))
+(print (is-set-p '(1 2 3 4 5))) 

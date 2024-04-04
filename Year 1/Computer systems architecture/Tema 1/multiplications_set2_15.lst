@@ -1,0 +1,43 @@
+     1                                  bits 32
+     2                                  global  start 
+     3                                  
+     4                                  extern  exit
+     5                                  import  exit  msvcrt.dll
+     6                                          
+     7                                  segment  data use32 class=data 
+     8 00000000 11                          a db 17
+     9 00000001 0F                          b db 15
+    10 00000002 07                          c db 7
+    11 00000003 0C                          d db 12
+    12 00000004 8404                        e dw 1156
+    13 00000006 E803                        f dw 1000
+    14 00000008 0500                        g dw 5
+    15 0000000A 0800                        h dw 8
+    16                                      
+    17                                  segment  code use32 class=code 
+    18                                  start: 
+    19                                  	;f*(e-2)/[3*(d-5)]
+    20 00000000 B800000000                  mov eax,0
+    21 00000005 BA00000000              	mov edx,0
+    22 0000000A 66A1[04000000]              mov ax,[e]
+    23 00000010 6683E802                    sub ax,2
+    24 00000014 668B15[06000000]            mov dx,[f]
+    25 0000001B 66F7E2                      mul dx    ;dx*ax= dx*ax= f*(e-2)
+    26 0000001E 89C3                        mov ebx,eax
+    27 00000020 B800000000                  mov eax,0
+    28 00000025 A0[03000000]                mov al,[d]
+    29 0000002A 2C05                        sub al,5
+    30 0000002C B403                        mov ah,3
+    31 0000002E F6E4                        mul ah     ;ax=ah*al = 3*(d-5)
+    32 00000030 B900000000                  mov ecx,0
+    33 00000035 6689C1                      mov cx,ax
+    34 00000038 B800000000                  mov eax,0
+    35 0000003D 89D8                        mov eax,ebx
+    36 0000003F 66F7F1                      div cx
+    37                                      
+    38                                      
+    39                                      
+    40                                  	
+    41 00000042 6A00                    	push   dword 0 
+    42 00000044 FF15[00000000]          	call   [exit] 
+    43                                      

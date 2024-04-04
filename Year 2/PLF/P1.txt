@@ -1,0 +1,20 @@
+% Define a predicate to check if an element is a member of a set
+member(X, [X|_]).
+member(X, [_|T]) :- member(X, T).
+
+% Define a predicate for the union of two sets
+union([], Set, Set). % The union of an empty set with Set is Set.
+union([H|T], Set, Result) :- member(H, Set), union(T, Set, Result).
+union([H|T], Set, [H|Result]) :- \+ member(H, Set), union(T, Set, Result).
+
+pairwise_combinations([], []).
+pairwise_combinations([X|Rest], Pairs) :-
+    find_pairs(X, Rest, Pairs1),
+    pairwise_combinations(Rest, Pairs2),
+    append(Pairs1, Pairs2, Pairs).
+
+find_pairs(_, [], []).
+find_pairs(X, [Y|Rest], [[X, Y]|Pairs]) :-
+    find_pairs(X, Rest, Pairs).
+
+

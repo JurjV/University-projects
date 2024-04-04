@@ -1,0 +1,74 @@
+     1                                  ;Read two numbers a and b (base 10) from the keyboard and calculate: (a+b)/(a-b). The quotient will be stored in a variable called "result" (defined in the data segment). The values are considered in signed represen
+     2                                  bits 32
+     3                                  
+     4                                  global start        
+     5                                  
+     6                                  
+     7                                  extern exit, printf, scanf         
+     8                                  import exit msvcrt.dll    
+     9                                  import printf msvcrt.dll    
+    10                                  import scanf msvcrt.dll     
+    11                                                            
+    12                                  segment data use32 class=data
+    13 00000000 00000000                	a dd  0      
+    14 00000004 00000000                    b dd  0   
+    15 00000008 00000000                    c dd  0 
+    16 0000000C 00000000                    d dd  0 
+    17 00000010 00000000                    result dd 0
+    18 00000014 613D00                  	read_message_a  db "a=", 0  
+    19 00000017 256400                  	read_format_a  db "%d", 0       
+    20 0000001A 623D00                  	read_message_b  db "b=", 0  
+    21 0000001D 256400                  	read_format_b  db "%d", 0
+    22 00000020 2825642B2564292F28-         result_format db "(%d+%d)/(%d-%d) = %d/%d = %d", 0
+    22 00000029 25642D256429203D20-
+    22 00000032 25642F2564203D2025-
+    22 0000003B 6400               
+    23                                      
+    24                                  segment code use32 class=code
+    25                                      start:
+    26                                         
+    27 00000000 68[14000000]                    push dword read_message_a 
+    28 00000005 FF15[00000000]                  call [printf]      ; printing the message "a="
+    29 0000000B 83C404                          add esp,4*1       
+    30                                                 
+    31 0000000E 68[00000000]                    push dword a       
+    32 00000013 68[17000000]                    push dword read_format_a
+    33 00000018 FF15[00000000]                  call [scanf]       ; reading the constant given to a from the keyboard
+    34 0000001E 83C408                          add esp,8     
+    35                                          
+    36                                          
+    37 00000021 68[1A000000]                    push dword read_message_b 
+    38 00000026 FF15[00000000]                  call [printf]      ; printing the message "b="
+    39 0000002C 83C404                          add esp,4*1       
+    40                                                 
+    41 0000002F 68[04000000]                    push dword b       
+    42 00000034 68[1D000000]                    push dword read_format_b
+    43 00000039 FF15[00000000]                  call [scanf]       ; reading the constant given to b from the keyboard
+    44 0000003F 83C408                          add esp,8
+    45                                          
+    46 00000042 A1[00000000]                    mov eax,[a]
+    47 00000047 2B05[04000000]                  sub eax,[b]
+    48 0000004D A3[08000000]                    mov [c],eax
+    49 00000052 50                              push eax   ; push (a-b) on the stack
+    50 00000053 A1[00000000]                    mov eax,[a]
+    51 00000058 0305[04000000]                  add eax,[b]
+    52 0000005E A3[0C000000]                    mov [d],eax
+    53 00000063 99                              cdq        ; convert (a+b) to qword 
+    54 00000064 5B                              pop ebx
+    55 00000065 F7FB                            idiv ebx     ; edx:eax= (a+b)/(a-b)
+    56 00000067 A3[10000000]                    mov [result],eax  ; result = eax
+    57                                          
+    58 0000006C FF35[10000000]                  push dword [result]
+    59 00000072 FF35[08000000]                  push dword [c]
+    60 00000078 FF35[0C000000]                  push dword [d]
+    61 0000007E FF35[04000000]                  push dword [b]
+    62 00000084 FF35[00000000]                  push dword [a]
+    63 0000008A FF35[04000000]                  push dword [b]
+    64 00000090 FF35[00000000]                  push dword [a]
+    65 00000096 68[20000000]                    push dword result_format  ;  printing the result in the console
+    66 0000009B FF15[00000000]                  call [printf]
+    67 000000A1 83C420                          add esp,4*8
+    68                                          
+    69                                          ; exit(0)
+    70 000000A4 6A00                            push dword 0      ; place on stack parameter for exit
+    71 000000A6 FF15[00000000]                  call [exit]       ; call exit to terminate the program

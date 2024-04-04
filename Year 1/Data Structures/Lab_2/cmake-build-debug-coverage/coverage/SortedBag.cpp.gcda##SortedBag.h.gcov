@@ -1,0 +1,67 @@
+        -:    0:Source:C:/Users/remeti1/Desktop/Faculta/Data_structures/Lab_2/SortedBag.h
+        -:    0:Graph:C:\Users\remeti1\Desktop\Faculta\Data_structures\Lab_2\cmake-build-debug-coverage\CMakeFiles\Lab_2.dir\SortedBag.cpp.gcno
+        -:    0:Data:C:\Users\remeti1\Desktop\Faculta\Data_structures\Lab_2\cmake-build-debug-coverage\CMakeFiles\Lab_2.dir\SortedBag.cpp.gcda
+        -:    0:Runs:1
+        -:    1:#pragma once
+        -:    2://DO NOT INCLUDE SORTEDBAGITERATOR
+        -:    3:
+        -:    4://DO NOT CHANGE THIS PART
+        -:    5:typedef int TComp;
+        -:    6:typedef TComp TElem;
+        -:    7:typedef bool(*Relation)(TComp, TComp);
+        -:    8:#define NULL_TCOMP -11111;
+        -:    9:
+        -:   10:class SortedBagIterator;
+        -:   11:
+        -:   12:class Node {
+        -:   13:public:
+        -:   14:    TComp element;
+        -:   15:    int frequency;
+        -:   16:    Node* prev;
+        -:   17:    Node* next;
+        -:   18:
+        -:   19:    // Constructor
+function _ZN4NodeC1ERKii called 8659 returned 100% blocks executed 100%
+     8659:   20:    Node(const TComp& e, int freq) : element(e), frequency(freq), prev(nullptr), next(nullptr) {}
+        -:   21:};
+        -:   22:
+        -:   23:class SortedBag {
+        -:   24:	friend class SortedBagIterator;
+        -:   25:    friend class Node;
+        -:   26:
+        -:   27:private:
+        -:   28:    Relation r;
+        -:   29:    Node *head;
+        -:   30:    int nr_elems;
+        -:   31:
+        -:   32:public:
+        -:   33:	//constructor
+        -:   34:	explicit SortedBag(Relation r);
+        -:   35:
+        -:   36:	//adds an element to the sorted bag
+        -:   37:	void add(TComp e);
+        -:   38:
+        -:   39:	//removes one occurence of an element from a sorted bag
+        -:   40:	//returns true if an eleent was removed, false otherwise (if e was not part of the sorted bag)
+        -:   41:	bool remove(TComp e);
+        -:   42:
+        -:   43:	//checks if an element appears in the sorted bag
+        -:   44:	bool search(TComp e) const;
+        -:   45:
+        -:   46:	//returns the number of occurrences for an element in the sorted bag
+        -:   47:	int nrOccurrences(TComp e) const;
+        -:   48:
+        -:   49:	//returns the number of elements from the sorted bag
+        -:   50:	int size() const;
+        -:   51:
+        -:   52:	//returns an iterator for this sorted bag
+        -:   53:	SortedBagIterator iterator() const;
+        -:   54:
+        -:   55:	//checks if the sorted bag is empty
+        -:   56:	bool isEmpty() const;
+        -:   57:
+        -:   58:	//destructor
+        -:   59:	~SortedBag();
+        -:   60:
+        -:   61:    int removeAll();
+        -:   62:};

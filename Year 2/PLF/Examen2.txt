@@ -1,0 +1,29 @@
+(defun find-max (lst)
+  (if (atom lst)
+      lst
+      (if (listp (car lst))
+          (if (cdr lst)
+              (max (find-max (car lst)) (find-max (cdr lst)))
+              (find-max (car lst)))
+          (if (cdr lst)
+              (max (car lst) (find-max (cdr lst)))
+              (car lst)))))
+
+(defun remove-all-occurrences (elem lst)
+  (if (null lst)
+      lst
+      (if (listp (car lst))
+          (cons (remove-all-occurrences elem (car lst))
+                (remove-all-occurrences elem (cdr lst)))
+          (if (eql (car lst) elem)
+              (remove-all-occurrences elem (cdr lst))
+              (cons (car lst) (remove-all-occurrences elem (cdr lst)))))))
+
+(defun remove-all-max (el lst)
+(setq el (find-max lst))
+(setq lst (remove-all-occurrences el lst))
+lst
+)
+  
+
+(print (remove-all-max 0 '(5(4(2 5 1) 5 1) 2 5 1 (5 4) 3) ))

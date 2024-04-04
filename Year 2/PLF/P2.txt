@@ -1,0 +1,47 @@
+% Predicate to replace all occurrences of Element with Replacement in a list
+replace_element([], _, _, []).
+replace_element([Element|T], Element, Replacement, [Replacement|NewList]) :-
+    % If Element is found at the head of the list, replace it with Replacement.
+    replace_element(T, Element, Replacement, NewList).
+replace_element([H|T], Element, Replacement, [H|NewList]) :-
+    % If Element is not found at the head of the list, keep the head as is.
+    replace_element(T, Element, Replacement, NewList).
+
+
+%Predicate to find the max number in a list
+find_max([],C,C).
+find_max([H|T],C,R):-
+    is_list(H),
+    find_max(T,C,R).
+find_max([H|T],C,R):-
+    \+is_list(H),
+    H=<C,
+    find_max(T,C,R).
+find_max([H|T],C,R):-
+    \+is_list(H),
+    H>C,
+    find_max(T,H,R).
+
+start_find_max(X,R):-find_max(X,0,R).
+
+add_to_end(X,Y,R):-append(Y,[X],R).
+
+change_list([],_,C,C).
+change_list([H|T],M,C,R):-
+    \+is_list(H),
+    add_to_end(H,C,NewC),
+    change_list(T,M,NewC,R).
+change_list([H|T],M,C,R):-
+    is_list(H),
+    start_find_max(H,NewMax),
+    replace_element(H,M,NewMax,NewRes),
+    append(C,[NewRes],NewC),
+    change_list(T,M,NewC,R).
+
+start_change_list(X,R):-
+    start_find_max(X,Max),
+    change_list(X,Max,[],R).
+
+
+
+
